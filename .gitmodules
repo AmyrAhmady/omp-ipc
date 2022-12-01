@@ -1,0 +1,3 @@
+[submodule "deps/omp-sdk"]
+	path = deps/omp-sdk
+	url = https://github.com/openmultiplayer/open.mp-sdk
