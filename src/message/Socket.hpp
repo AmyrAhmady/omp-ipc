@@ -19,6 +19,21 @@ struct MessageData
 class MessageSocket
 {
 public:
+	struct IPCWorker
+	{
+		enum class STATE
+		{
+			INIT,
+			RECV,
+			WAIT,
+			SEND
+		} state;
+		nng_aio* aio;
+		nng_msg* msg;
+		nng_ctx  ctx;
+		MessageSocket* messageSocket;
+	};
+
 	static std::vector<MessageSocket*> sockets;
 	// static SafeQueue<MessageData> messageQueue;
 
@@ -27,9 +42,8 @@ public:
 
 	static void ProcessQueue();
 
-	void Process();
-	void Send(const std::string& message);
-	bool Receive(std::string& message);
+	IPCWorker* AllocWorker();
+	static void Process(IPCWorker* worker);
 
 private:
 	nng_socket socket_;
