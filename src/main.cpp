@@ -3,7 +3,7 @@
 #include "message/Handler.hpp"
 #include "api/Manager.hpp"
 
-struct OmpIPCComponent final : IComponent, CoreEventHandler {
+struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler {
 	PROVIDE_UID(0x4eee85f136b79704);
 
 	StringView componentName() const override
@@ -25,6 +25,7 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler {
 		MessageHandlerPool::Get()->Init();
 
 		core->getEventDispatcher().addEventHandler(this);
+		core->getPlayers().getEventDispatcher().addEventHandler(this);
 		c->printLn("omp-ipc component has been loaded");
 	}
 
@@ -58,6 +59,7 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler {
 		if (core)
 		{
 			core->getEventDispatcher().removeEventHandler(this);
+			core->getPlayers().getEventDispatcher().removeEventHandler(this);
 		}
 		delete this;
 	}
