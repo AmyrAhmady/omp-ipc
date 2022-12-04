@@ -34,6 +34,13 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 		//MessageSocket::ProcessQueue();
 	}
 
+	void onPlayerConnect(IPlayer& player) override
+	{
+		nlohmann::json eventData;
+		eventData["playerId"] = player.getID();
+		MessageSocket::ProcessEvent("onConnect", eventData);
+	}
+
 	void onInit(IComponentList* components) override
 	{
 		OmpManager::Get()->Init(core, components);
