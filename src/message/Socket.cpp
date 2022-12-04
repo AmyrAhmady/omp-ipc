@@ -36,6 +36,44 @@ MessageSocket::~MessageSocket()
 	nng_close(socketClient_);
 }
 
+void MessageSocket::ProcessEvent(const std::string& name, const nlohmann::json& args)
+{
+	for (auto socket : MessageSocket::sockets)
+	{
+		// Set this to true so our custom worker thread doesn't process anything while we are in an event scope
+		// Worker's loop is placed in MessageSocket::Tick
+		socket->processingEvents_ = true;
+
+		nlohmann::json eventData;
+		eventData["name"] = "event";
+		eventData["params"]["event"] = name;
+		eventData["params"]["args"] = args;
+		socket->SendRequest(eventData.dump());
+
+		while (true)
+		{
+			std::string recvBuff;
+			auto receivedResponse = socket->ReceiveResponse(recvBuff);
+			if (!receivedResponse)
+			{
+				socket->ProcessRequest();
+				continue;
+			}
+
+			nlohmann::json recvObject = nlohmann::json::parse(recvBuff);
+			if (recvObject.count("name"))
+			{
+				std::string actionName = recvObject["name"].get<std::string>();
+				if (actionName == "event_end")
+				{
+					break;
+				}
+			}
+		}
+
+		// Set this back to false so our worker's thread can continue processing standalone messages
+		socket->processingEvents_ = false;
+	}
 }
 
 //void MessageSocket::ProcessQueue()
@@ -190,6 +228,8 @@ void MessageSocket::Tick()
 	for (;;)
 	{
 		if (stopReceiveProcess_) break;
+		// Skip processing standalone requests, when set to true it means we are processing events and requests in their scopes
+		if (processingEvents_) continue;
 		ProcessRequest();
 		std::this_thread::sleep_for(std::chrono::nanoseconds(100));
 	}

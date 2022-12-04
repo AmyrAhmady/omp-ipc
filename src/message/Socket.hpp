@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <nng/nng.h>
-#include <nng/protocol/reqrep0/rep.h>
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <thread>
@@ -26,6 +25,7 @@ public:
 	~MessageSocket();
 
 	static void ProcessQueue();
+	static void ProcessEvent(const std::string& name, const nlohmann::json& args);
 
 	void Tick();
 	void ProcessRequest();
