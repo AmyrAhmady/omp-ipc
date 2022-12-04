@@ -27,12 +27,22 @@ public:
 
 	static void ProcessQueue();
 
-	void Process();
-	void Send(const std::string& message);
-	bool Receive(std::string& message);
+	void Tick();
+	void ProcessRequest();
+	void CreateClient();
 
+	void SendResponse(const std::string& message);
+	bool ReceiveRequest(std::string& message);
+
+	void SendRequest(const std::string& message);
+	bool ReceiveResponse(std::string& message);
+
+	bool processingEvents_ = false;
 private:
-	nng_socket socket_;
+	nng_socket socketServer_;
+	nng_socket socketClient_;
+	std::string socketName_;
 	std::thread thread_;
 	bool stopReceiveProcess_ = false;
+	bool clientInitialized_ = false;
 };
