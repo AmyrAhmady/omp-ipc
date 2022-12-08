@@ -4,7 +4,6 @@
 #include <nng/protocol/reqrep0/req.h>
 
 std::vector<MessageSocket*> MessageSocket::sockets;
-// SafeQueue<MessageData> MessageSocket::messageQueue;
 
 MessageSocket::MessageSocket(const std::string& name)
 	: socketName_(name)
@@ -75,26 +74,6 @@ void MessageSocket::ProcessEvent(const std::string& name, const nlohmann::json& 
 		socket->processingEvents_ = false;
 	}
 }
-
-//void MessageSocket::ProcessQueue()
-//{
-//	while (true)
-//	{
-//		MessageData message;
-//		bool available = messageQueue.dequeue(message);
-//		if (available)
-//		{
-//			nlohmann::json returnObject = MessageHandler::Call(message.name, message.params);
-//			message.sender->Send(returnObject.dump());
-//			continue;
-//		}
-//		else
-//		{
-//			break;
-//		}
-//	}
-//}
-
 
 void MessageSocket::CreateClient()
 {

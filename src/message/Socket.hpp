@@ -19,12 +19,11 @@ class MessageSocket
 {
 public:
 	static std::vector<MessageSocket*> sockets;
-	// static SafeQueue<MessageData> messageQueue;
+	static robin_hood::unordered_flat_set<std::string> subscribedEventNames;
 
 	MessageSocket(const std::string& name);
 	~MessageSocket();
 
-	static void ProcessQueue();
 	static void ProcessEvent(const std::string& name, const nlohmann::json& args);
 
 	void Tick();
