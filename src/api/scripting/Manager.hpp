@@ -1,5 +1,5 @@
 #pragma once
-#include "../utils/Singleton.hpp"
+#include "../../utils/Singleton.hpp"
 #include "sdk.hpp"
 #include "component.hpp"
 #include "Server/Components/Pickups/pickups.hpp"

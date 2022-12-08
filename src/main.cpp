@@ -1,7 +1,7 @@
 #include <sdk.hpp>
 #include "message/Socket.hpp"
 #include "message/Handler.hpp"
-#include "api/Manager.hpp"
+#include "api/scripting/Manager.hpp"
 
 struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler {
 	PROVIDE_UID(0x4eee85f136b79704);

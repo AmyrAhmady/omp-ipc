@@ -5,6 +5,7 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <robin_hood.h>
 
 class MessageSocket;
 
@@ -19,7 +20,6 @@ class MessageSocket
 {
 public:
 	static std::vector<MessageSocket*> sockets;
-	static robin_hood::unordered_flat_set<std::string> subscribedEventNames;
 
 	MessageSocket(const std::string& name);
 	~MessageSocket();
@@ -33,15 +33,6 @@ public:
 	// Receive request, process it, and send response back to client
 	void ProcessRequest();
 
-	// Create an IPC client, so we can request something from clients and get a response
-	void CreateClient();
-
-	// Destroy the IPC client
-	void DestroyClient();
-
-	// Check if client is initialized
-	bool IsClientInitialized() { return clientInitialized_; }
-
 	// Send a response back to requester, after receiving their request
 	void SendResponse(const std::string& message);
 
@@ -54,12 +45,54 @@ public:
 	// Receive response after sending a client requests, like event return values
 	bool ReceiveResponse(std::string& message);
 
+	// Create an IPC client, so we can request something from clients and get a response
+	void CreateClient();
+
+	// Destroy the IPC client
+	void DestroyClient();
+
+	// Check if client is initialized
+	bool IsClientInitialized() { return clientInitialized_; }
+
+	// Add event name to list of subscribed events
+	void SubscribeToEvent(const std::string& eventName)
+	{
+		if (!IsEventSubscribed(eventName))
+		{
+			subscribedEventNames.insert(eventName);
+		}
+	}
+
+	// Remove event name from list of subscribed events
+	void UnsubscribeToEvent(const std::string& eventName)
+	{
+		if (IsEventSubscribed(eventName))
+		{
+			subscribedEventNames.erase(eventName);
+		}
+	}
+
+	// Is event name available in subscribed event name list
+	bool IsEventSubscribed(const std::string& eventName)
+	{
+		auto it = subscribedEventNames.find(eventName);
+		if (it == subscribedEventNames.cend())
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
 	bool processingEvents_ = false;
 private:
 	nng_socket socketServer_;
 	nng_socket socketClient_;
 	std::string socketName_;
 	std::thread thread_;
+	robin_hood::unordered_flat_set<std::string> subscribedEventNames;
 	bool stopReceiveProcess_ = false;
 	bool clientInitialized_ = false;
 };

@@ -15,3 +15,23 @@ IPC_API_EX(create_omp_ipc_client, const nlohmann::json& params, MessageSocket* m
 		return "{\"ret_value\":true}"_json;
 	}
 }
+
+IPC_API(subscribeEvent, const nlohmann::json& params, MessageSocket* messageSocket)
+{
+	if (params.count("eventName"))
+	{
+		messageSocket->SubscribeToEvent(params["eventName"].get<std::string>());
+		return "{\"ret_value\":true}"_json;
+	}
+	return "{\"ret_value\":false}"_json;
+}
+
+IPC_API(unsubscribeEvent, const nlohmann::json& params, MessageSocket* messageSocket)
+{
+	if (params.count("eventName"))
+	{
+		messageSocket->SubscribeToEvent(params["eventName"].get<std::string>());
+		return "{\"ret_value\":true}"_json;
+	}
+	return "{\"ret_value\":false}"_json;
+}
