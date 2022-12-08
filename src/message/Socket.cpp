@@ -117,6 +117,12 @@ void MessageSocket::CreateClient()
 	clientInitialized_ = true;
 }
 
+void MessageSocket::DestroyClient()
+{
+	clientInitialized_ = false;
+	nng_close(socketClient_);
+}
+
 bool MessageSocket::ReceiveRequest(std::string& message)
 {
 	char* buf = NULL;
@@ -205,15 +211,8 @@ void MessageSocket::ProcessRequest()
 		nlohmann::json messageObject = nlohmann::json::parse(recvBuf);
 		if (messageObject.count("name"))
 		{
-			if (!clientInitialized_ && messageObject["name"].get<std::string>() == "create_omp_ipc_client")
-			{
-				CreateClient();
-				SendResponse("{\"ret_value\":\"true\"}");
-				return;
-			}
-
 			nlohmann::json returnObject =
-				MessageHandlerPool::Get()->Call(messageObject["name"].get<std::string>(), messageObject["params"]);
+				MessageHandlerPool::Get()->Call(messageObject["name"].get<std::string>(), messageObject["params"], this);
 			SendResponse(returnObject.dump());
 		}
 		else

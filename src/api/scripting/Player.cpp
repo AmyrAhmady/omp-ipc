@@ -1,4 +1,4 @@
-#include "../message/Handler.hpp"
+#include "../../message/Handler.hpp"
 #include "./Manager.hpp"
 
 IPC_API(sendClientMessage, const nlohmann::json& params)

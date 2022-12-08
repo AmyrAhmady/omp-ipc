@@ -30,6 +30,8 @@ public:
 	void Tick();
 	void ProcessRequest();
 	void CreateClient();
+	void DestroyClient();
+	bool IsClientInitialized() { return clientInitialized_; }
 
 	void SendResponse(const std::string& message);
 	bool ReceiveRequest(std::string& message);

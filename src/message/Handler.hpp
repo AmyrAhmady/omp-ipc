@@ -4,6 +4,8 @@
 #include <iostream>
 #include "../utils/Singleton.hpp"
 
+class MessageSocket;
+
 class MessageHandler
 {
 public:
@@ -15,7 +17,7 @@ public:
 	~MessageHandler()
 	{}
 
-	virtual nlohmann::json Call(const nlohmann::json& params) = 0;
+	virtual nlohmann::json Call(const nlohmann::json& params, MessageSocket* messageSocket) = 0;
 };
 
 class MessageHandlerPool : public Singleton<MessageHandlerPool>
@@ -24,13 +26,13 @@ public:
 	robin_hood::unordered_flat_map<std::string, MessageHandler*> handlers; // Fully initialized handlers with registered functions
 	std::vector<MessageHandler*> handlerInstances; // To be fully initialized later
 
-	nlohmann::json Call(const std::string& name, const nlohmann::json& params)
+	nlohmann::json Call(const std::string& name, const nlohmann::json& params, MessageSocket* messageSocket)
 	{
 		auto it = handlers.find(name);
 		if (it != handlers.end())
 		{
 			MessageHandler* handler = (*it).second;
-			return handler->Call(params);
+			return handler->Call(params, messageSocket);
 		}
 		else
 		{
@@ -86,9 +88,33 @@ public:
 			MessageHandlerPool::Get()->UnRegister(this);                             \
 		}                                                                            \
 																					 \
-		nlohmann::json Call(params) override;                                        \
+		nlohmann::json Call(params, MessageSocket* messageSocket) override;          \
 	};                                                                               \
 																					 \
 	MessageHandler_##name ipc_api_##name;                                            \
 																					 \
-	nlohmann::json MessageHandler_##name::Call(params)                               \
+	nlohmann::json MessageHandler_##name::Call(params, MessageSocket* messageSocket) \
+
+// name: name for IPC event sent from clients (other languages)
+// params: params in nlohmann::json object
+// messageSocket: an instance of relevant messageSocket
+#define IPC_API_EX(name, params, messageSocket)                                      \
+	class MessageHandler_##name : public MessageHandler                              \
+	{                                                                                \
+	public:                                                                          \
+		MessageHandler_##name() {                                                    \
+			MessageHandler::name_ = #name;                                           \
+			MessageHandlerPool::Get()->Register(this);                               \
+		}                                                                            \
+																					 \
+		~MessageHandler_##name()                                                     \
+		{                                                                            \
+			MessageHandlerPool::Get()->UnRegister(this);                             \
+		}                                                                            \
+																					 \
+		nlohmann::json Call(params, messageSocket) override;                         \
+	};                                                                               \
+																					 \
+	MessageHandler_##name ipc_api_##name;                                            \
+																					 \
+	nlohmann::json MessageHandler_##name::Call(params, messageSocket)                \
