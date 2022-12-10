@@ -118,3 +118,15 @@ public:
 	MessageHandler_##name ipc_api_##name;                                            \
 																					 \
 	nlohmann::json MessageHandler_##name::Call(params, messageSocket)                \
+
+#define UNDEFINED_FAILED_RETURN "{\"ret_value\":undefined}"_json
+#define RETURN_VALUE(x) valueSetJsonReturnValue(x)
+#define NO_DATA_SUCCESS_RETURN "{\"ret_value\":true}"_json
+
+template<typename T>
+inline nlohmann::json valueSetJsonReturnValue(T value)
+{
+	nlohmann::json ret_value;
+	ret_value["ret_value"] = value;
+	return ret_value;
+}

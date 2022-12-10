@@ -13,10 +13,6 @@
 #define STRINGIFY2(X) #X
 #define STRINGIFY(X) STRINGIFY2(X)
 
-#define UNDEFINED_FAILED_RETURN "{\"ret_value\":undefined}"_json
-#define RETURN_VALUE(x) valueSetJsonReturnValue(x)
-#define NO_DATA_SUCCESS_RETURN "{\"ret_value\":true}"_json
-
 class OmpManager : public Singleton<OmpManager>
 {
 public:
@@ -63,14 +59,6 @@ inline PlayerDataType* GetPlayerData(IPlayer* player)
 		return nullptr;
 	}
 	return queryExtension<PlayerDataType>(*player);
-}
-
-template<typename T>
-inline nlohmann::json valueSetJsonReturnValue(T value)
-{
-	nlohmann::json ret_value;
-	ret_value["ret_value"] = value;
-	return ret_value;
 }
 
 /// Get player using provided player id, return fail_ret if not available

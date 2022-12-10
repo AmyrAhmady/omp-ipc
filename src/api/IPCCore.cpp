@@ -6,13 +6,13 @@ IPC_API_EX(create_omp_ipc_client, const nlohmann::json& params, MessageSocket* m
 	if (!messageSocket->IsClientInitialized())
 	{
 		messageSocket->CreateClient();
-		return "{\"ret_value\":true}"_json;
+		return NO_DATA_SUCCESS_RETURN;
 	}
 	else
 	{
 		messageSocket->DestroyClient();
 		messageSocket->CreateClient();
-		return "{\"ret_value\":true}"_json;
+		return NO_DATA_SUCCESS_RETURN;
 	}
 }
 
@@ -21,9 +21,9 @@ IPC_API_EX(subscribe_event, const nlohmann::json& params, MessageSocket* message
 	if (params.count("eventName"))
 	{
 		messageSocket->SubscribeToEvent(params["eventName"].get<std::string>());
-		return "{\"ret_value\":true}"_json;
+		return NO_DATA_SUCCESS_RETURN;
 	}
-	return "{\"ret_value\":false}"_json;
+	return RETURN_VALUE(false);
 }
 
 IPC_API_EX(unsubscribe_event, const nlohmann::json& params, MessageSocket* messageSocket)
@@ -31,7 +31,7 @@ IPC_API_EX(unsubscribe_event, const nlohmann::json& params, MessageSocket* messa
 	if (params.count("eventName"))
 	{
 		messageSocket->SubscribeToEvent(params["eventName"].get<std::string>());
-		return "{\"ret_value\":true}"_json;
+		return NO_DATA_SUCCESS_RETURN;
 	}
-	return "{\"ret_value\":false}"_json;
+	return RETURN_VALUE(false);
 }
