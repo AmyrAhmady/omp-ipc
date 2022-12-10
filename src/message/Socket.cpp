@@ -23,14 +23,10 @@ MessageSocket::MessageSocket(const std::string& name)
 		std::cout << "[Fatal Error] nng_listen: " << nng_strerror(ret_value);
 		std::exit(1);
 	}
-
-	thread_ = std::thread(&MessageSocket::Tick, this);
 }
 
 MessageSocket::~MessageSocket()
 {
-	stopReceiveProcess_ = true;
-	thread_.join();
 	nng_close(socketServer_);
 	nng_close(socketClient_);
 }
@@ -199,16 +195,5 @@ void MessageSocket::ProcessRequest()
 			SendResponse("{\"ret_value\":\"invalid_format\"}");
 		}
 	}
-}
-
-void MessageSocket::Tick()
-{
-	for (;;)
-	{
-		if (stopReceiveProcess_) break;
-		// Skip processing standalone requests, when set to true it means we are processing events and requests in their scopes
-		if (processingEvents_) continue;
-		ProcessRequest();
-		std::this_thread::sleep_for(std::chrono::nanoseconds(100));
-	}
+	return false;
 }

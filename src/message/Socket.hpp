@@ -86,13 +86,10 @@ public:
 		}
 	}
 
-	bool processingEvents_ = false;
 private:
 	nng_socket socketServer_;
 	nng_socket socketClient_;
 	std::string socketName_;
-	std::thread thread_;
 	robin_hood::unordered_flat_set<std::string> subscribedEventNames;
-	bool stopReceiveProcess_ = false;
-	bool clientInitialized_ = false;
+	bool clientInitialized_;
 };
