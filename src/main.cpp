@@ -24,7 +24,7 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 		MessageSocket::sockets.push_back(new MessageSocket("omp_node"));
 		MessageHandlerPool::Get()->Init();
 
-		core->getEventDispatcher().addEventHandler(this, EventPriority::EventPriority_Lowest);
+		core->getEventDispatcher().addEventHandler(this, EventPriority::EventPriority_FairlyHigh);
 		core->getPlayers().getEventDispatcher().addEventHandler(this);
 		c->printLn("omp-ipc component has been loaded");
 	}
