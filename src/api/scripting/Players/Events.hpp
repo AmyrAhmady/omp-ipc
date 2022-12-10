@@ -26,7 +26,7 @@ public:
 
 	void onPlayerKeyStateChange(IPlayer& player, uint32_t newKeys, uint32_t oldKeys) override
 	{
-		
+
 	}
 
 	void onIncomingConnection(IPlayer& player, StringView ipAddress, unsigned short port) override
@@ -47,12 +47,12 @@ public:
 
 	void onPlayerStreamIn(IPlayer& player, IPlayer& forPlayer) override
 	{
-		
+
 	}
 
 	void onPlayerStreamOut(IPlayer& player, IPlayer& forPlayer) override
 	{
-		
+
 	}
 
 	bool onPlayerText(IPlayer& player, StringView message) override
@@ -93,22 +93,22 @@ public:
 
 	void onPlayerDeath(IPlayer& player, IPlayer* killer, int reason) override
 	{
-		
+
 	}
 
 	void onPlayerTakeDamage(IPlayer& player, IPlayer* from, float amount, unsigned weapon, BodyPart part) override
 	{
-		
+
 	}
 
 	void onPlayerGiveDamage(IPlayer& player, IPlayer& to, float amount, unsigned weapon, BodyPart part) override
 	{
-		
+
 	}
 
 	void onPlayerInteriorChange(IPlayer& player, unsigned newInterior, unsigned oldInterior) override
 	{
-		
+
 	}
 
 	void onPlayerStateChange(IPlayer& player, PlayerState newState, PlayerState oldState) override
@@ -123,12 +123,12 @@ public:
 
 	void onPlayerClickPlayer(IPlayer& player, IPlayer& clicked, PlayerClickSource source) override
 	{
-		
+
 	}
 
 	void onClientCheckResponse(IPlayer& player, int actionType, int address, int results) override
 	{
-		
+
 	}
 
 	bool onUpdate(IPlayer& player, TimePoint now) override
