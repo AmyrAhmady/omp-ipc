@@ -3,7 +3,7 @@
 #include "message/Handler.hpp"
 #include "api/scripting/Manager.hpp"
 
-struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler {
+struct OmpIPCComponent final : IComponent, CoreEventHandler {
 	PROVIDE_UID(0x4eee85f136b79704);
 
 	StringView componentName() const override
@@ -31,13 +31,6 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 	void onTick(Microseconds elapsed, TimePoint now) override
 	{
 		MessageSocket::ProcessRequests(elapsed, now);
-	}
-
-	void onPlayerConnect(IPlayer& player) override
-	{
-		nlohmann::json eventData;
-		eventData["playerId"] = player.getID();
-		MessageSocket::ProcessEvent("onConnect", eventData);
 	}
 
 	void onInit(IComponentList* components) override
