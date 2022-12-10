@@ -6,7 +6,7 @@ IPC_API(Actor_Create, const nlohmann::json& params)
 	IActorsComponent* component = OmpManager::Get()->actors;
 	if (component)
 	{
-		int modelid = params["modelid"];
+		int modelid = params["model"];
 		float x = params["x"];
 		float y = params["y"];
 		float z = params["z"];
