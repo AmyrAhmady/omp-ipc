@@ -25,7 +25,6 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 		MessageHandlerPool::Get()->Init();
 
 		core->getEventDispatcher().addEventHandler(this, EventPriority::EventPriority_FairlyHigh);
-		core->getPlayers().getEventDispatcher().addEventHandler(this);
 		c->printLn("omp-ipc component has been loaded");
 	}
 
@@ -44,6 +43,7 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 	void onInit(IComponentList* components) override
 	{
 		OmpManager::Get()->Init(core, components);
+		OmpManager::Get()->AddEvents();
 	}
 
 	void onReady() override
@@ -65,8 +65,8 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 	{
 		if (core)
 		{
+			OmpManager::Get()->RemoveEvents();
 			core->getEventDispatcher().removeEventHandler(this);
-			core->getPlayers().getEventDispatcher().removeEventHandler(this);
 		}
 		delete this;
 	}
