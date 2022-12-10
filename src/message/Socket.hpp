@@ -6,6 +6,7 @@
 #include <thread>
 #include <chrono>
 #include <robin_hood.h>
+#include "sdk.hpp"
 
 class MessageSocket;
 
@@ -27,11 +28,11 @@ public:
 	// Process events in each tick, send request to each socket and wait for their return response
 	static void ProcessEvent(const std::string& name, const nlohmann::json& args);
 
-	// Process message requests in socket's own thread in a loop
-	void Tick();
+	// Process message requests in all sockets, must be used in the beginning of each tick
+	static void ProcessRequests(Microseconds elapsed, TimePoint now);
 
 	// Receive request, process it, and send response back to client
-	void ProcessRequest();
+	bool ProcessRequest();
 
 	// Send a response back to requester, after receiving their request
 	void SendResponse(const std::string& message);

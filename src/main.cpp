@@ -24,14 +24,14 @@ struct OmpIPCComponent final : IComponent, CoreEventHandler, PlayerEventHandler 
 		MessageSocket::sockets.push_back(new MessageSocket("omp_node"));
 		MessageHandlerPool::Get()->Init();
 
-		core->getEventDispatcher().addEventHandler(this);
+		core->getEventDispatcher().addEventHandler(this, EventPriority::EventPriority_Lowest);
 		core->getPlayers().getEventDispatcher().addEventHandler(this);
 		c->printLn("omp-ipc component has been loaded");
 	}
 
 	void onTick(Microseconds elapsed, TimePoint now) override
 	{
-		//MessageSocket::ProcessQueue();
+		MessageSocket::ProcessRequests(elapsed, now);
 	}
 
 	void onPlayerConnect(IPlayer& player) override

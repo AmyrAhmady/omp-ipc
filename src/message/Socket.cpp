@@ -6,7 +6,7 @@
 std::vector<MessageSocket*> MessageSocket::sockets;
 
 MessageSocket::MessageSocket(const std::string& name)
-	: socketName_(name)
+	: socketName_(name), socketClient_({ 0 }), socketServer_({ 0 }), clientInitialized_(false)
 {
 	int ret_value = 0;
 
@@ -35,10 +35,7 @@ void MessageSocket::ProcessEvent(const std::string& name, const nlohmann::json& 
 {
 	for (auto socket : MessageSocket::sockets)
 	{
-		// Set this to true so our custom worker thread doesn't process anything while we are in an event scope
-		// Worker's loop is placed in MessageSocket::Tick
-		socket->processingEvents_ = true;
-
+		// Send a request to client to allow event processing and wait for `event_end` response so we know when to stop processing
 		nlohmann::json eventData;
 		eventData["name"] = "event";
 		eventData["params"]["event"] = name;
@@ -65,9 +62,39 @@ void MessageSocket::ProcessEvent(const std::string& name, const nlohmann::json& 
 				}
 			}
 		}
+	}
+}
 
-		// Set this back to false so our worker's thread can continue processing standalone messages
-		socket->processingEvents_ = false;
+void MessageSocket::ProcessRequests(Microseconds elapsed, TimePoint now)
+{
+	for (auto socket : MessageSocket::sockets)
+	{
+		// Try to receive requests sent by client, as if client is trying to call an IPC api
+		// After N tries (N could be any number, maybe even configurable) if there are not requests, we will process them (if there are any) in next tick
+		// Or in the middle of event processings
+		// Note: These type of calls are outside of event scopes, like global scope, timers, threads, or callbacks
+		// For example in JS, in connection successful callback of database conneciton attempts, or setTimeout/setInterval
+
+		while (true)
+		{
+			int failedReadAttempts = 0;
+			std::string recvBuff;
+			if (socket->ProcessRequest())
+			{
+				failedReadAttempts = 0;
+			}
+			else
+			{
+				failedReadAttempts++;
+			}
+
+			// If amount of failed read/receive attempts wen't over 5 (or equal) just let next tick process queued up requests
+			// This can also be result of empty queue of requests, but we need to make sure I guess?
+			if (failedReadAttempts >= 5)
+			{
+				break;
+			}
+		}
 	}
 }
 
@@ -177,7 +204,7 @@ void MessageSocket::SendRequest(const std::string& message)
 	}
 }
 
-void MessageSocket::ProcessRequest()
+bool MessageSocket::ProcessRequest()
 {
 	std::string recvBuf;
 	bool hasReceived = ReceiveRequest(recvBuf);
@@ -194,6 +221,7 @@ void MessageSocket::ProcessRequest()
 		{
 			SendResponse("{\"ret_value\":\"invalid_format\"}");
 		}
+		return true;
 	}
 	return false;
 }
