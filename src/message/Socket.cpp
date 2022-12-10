@@ -35,6 +35,12 @@ void MessageSocket::ProcessEvent(const std::string& name, const nlohmann::json& 
 {
 	for (auto socket : MessageSocket::sockets)
 	{
+		// Check if event is subscribed
+		if (!socket->IsEventSubscribed(name))
+		{
+			continue;
+		}
+
 		// Send a request to client to allow event processing and wait for `event_end` response so we know when to stop processing
 		nlohmann::json eventData;
 		eventData["name"] = "event";
@@ -75,10 +81,9 @@ void MessageSocket::ProcessRequests(Microseconds elapsed, TimePoint now)
 		// Note: These type of calls are outside of event scopes, like global scope, timers, threads, or callbacks
 		// For example in JS, in connection successful callback of database conneciton attempts, or setTimeout/setInterval
 
+		int failedReadAttempts = 0;
 		while (true)
 		{
-			int failedReadAttempts = 0;
-			std::string recvBuff;
 			if (socket->ProcessRequest())
 			{
 				failedReadAttempts = 0;

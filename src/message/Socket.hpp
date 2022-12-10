@@ -1,3 +1,4 @@
+#pragma once
 #include <cstdlib>
 #include <iostream>
 #include <nng/nng.h>
