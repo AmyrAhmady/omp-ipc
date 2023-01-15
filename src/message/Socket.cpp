@@ -215,16 +215,22 @@ bool MessageSocket::ProcessRequest()
 	bool hasReceived = ReceiveRequest(recvBuf);
 	if (hasReceived)
 	{
-		nlohmann::json messageObject = nlohmann::json::parse(recvBuf);
-		if (messageObject.count("name"))
-		{
-			nlohmann::json returnObject =
-				MessageHandlerPool::Get()->Call(messageObject["name"].get<std::string>(), messageObject["params"], this);
-			SendResponse(returnObject.dump());
+		try {
+			nlohmann::json messageObject = nlohmann::json::parse(recvBuf);
+			if (messageObject.count("name"))
+			{
+				std::cout << "params: " << messageObject.dump() << std::endl;
+				nlohmann::json returnObject =
+					MessageHandlerPool::Get()->Call(messageObject["name"].get<std::string>(), messageObject["params"], this);
+				SendResponse(returnObject.dump());
+			}
+			else
+			{
+				SendResponse("{\"ret_value\":\"invalid_format\"}");
+			}
 		}
-		else
-		{
-			SendResponse("{\"ret_value\":\"invalid_format\"}");
+		catch (std::exception e) {
+			std::cout << "[Exception] MessageSocket::ProcessRequest: " << e.what() << std::endl;
 		}
 		return true;
 	}
