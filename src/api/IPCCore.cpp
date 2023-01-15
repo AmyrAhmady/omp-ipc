@@ -30,7 +30,7 @@ IPC_API_EX(unsubscribe_event, const nlohmann::json& params, MessageSocket* messa
 {
 	if (params.count("eventName"))
 	{
-		messageSocket->SubscribeToEvent(params["eventName"].get<std::string>());
+		messageSocket->UnsubscribeToEvent(params["eventName"].get<std::string>());
 		return NO_DATA_SUCCESS_RETURN;
 	}
 	return RETURN_VALUE(false);
