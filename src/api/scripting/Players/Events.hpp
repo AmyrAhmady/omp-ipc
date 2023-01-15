@@ -3,7 +3,12 @@
 #include "../../../message/Socket.hpp"
 #include "sdk.hpp"
 
-class PlayerEvents : public PlayerEventHandler, public PlayerUpdateEventHandler, public Singleton<PlayerEvents>
+class PlayerEvents :
+	public PlayerConnectEventHandler, public PlayerUpdateEventHandler, public PlayerSpawnEventHandler,
+	public PlayerStreamEventHandler, public PlayerTextEventHandler, public PlayerShotEventHandler,
+	public PlayerChangeEventHandler, public PlayerDamageEventHandler, public PlayerClickEventHandler,
+	public PlayerCheckEventHandler,
+	public Singleton<PlayerEvents>
 {
 public:
 	void onPlayerConnect(IPlayer& player) override
@@ -131,7 +136,7 @@ public:
 
 	}
 
-	bool onUpdate(IPlayer& player, TimePoint now) override
+	bool onPlayerUpdate(IPlayer& player, TimePoint now) override
 	{
 		bool ret = true;
 		return ret;

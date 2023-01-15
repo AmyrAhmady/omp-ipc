@@ -8,10 +8,22 @@
 		component->getEventDispatcher().addEventHandler(event_instance); \
 	}
 
+#define ADD_PLAYER_EVENT_HANDLER(component, event_name, event_instance) \
+	if (component) \
+	{ \
+		component->getPlayer##event_name##Dispatcher().addEventHandler(event_instance); \
+	}
+
 #define REMOVE_EVENT_HANDLER(component, event_instance) \
 	if (component) \
 	{ \
 		component->getEventDispatcher().removeEventHandler(event_instance); \
+	}
+
+#define REMOVE_PLAYER_EVENT_HANDLER(component, event_name, event_instance) \
+	if (component) \
+	{ \
+		component->getPlayer##event_name##Dispatcher().removeEventHandler(event_instance); \
 	}
 
 void OmpManager::Init(ICore* c, IComponentList* clist)
@@ -30,11 +42,27 @@ void OmpManager::Init(ICore* c, IComponentList* clist)
 void OmpManager::AddEvents()
 {
 	ADD_EVENT_HANDLER(actors, ActorEvents::Get());
-	ADD_EVENT_HANDLER(players, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Spawn, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Connect, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Stream, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Text, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Shot, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Change, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Damage, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Click, PlayerEvents::Get());
+	ADD_PLAYER_EVENT_HANDLER(players, Check, PlayerEvents::Get());
 }
 
 void OmpManager::RemoveEvents()
 {
 	REMOVE_EVENT_HANDLER(actors, ActorEvents::Get());
-	REMOVE_EVENT_HANDLER(players, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Spawn, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Connect, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Stream, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Text, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Shot, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Change, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Damage, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Click, PlayerEvents::Get());
+	REMOVE_PLAYER_EVENT_HANDLER(players, Check, PlayerEvents::Get());
 }
