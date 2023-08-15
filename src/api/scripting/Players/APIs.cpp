@@ -165,7 +165,7 @@ IPC_API(Player_ForceClassSelection, const nlohmann::json& params)
 IPC_API(Player_SetVelocity, const nlohmann::json& params)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	player->setVelocity({ params["vx"], params["vy"], params["vz"] });
+	player->setVelocity({ params["x"], params["y"], params["z"] });
 	return NO_DATA_SUCCESS_RETURN;
 }
 
