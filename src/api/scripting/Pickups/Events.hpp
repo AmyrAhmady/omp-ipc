@@ -26,10 +26,10 @@ struct PickupEvents : public PickupEventHandler, public Singleton<PickupEvents>
 		args["pickup"] = uintptr_t(&pickup);
 		MessageSocket::ProcessEvent("pickupStreamOut", args);
 	}
+};
 
-	/*
-		Per-Player Pickups
-	*/
+struct PlayerPickupEvents : public PickupEventHandler, public Singleton<PlayerPickupEvents> 
+{
 	void onPlayerPickUpPlayerPickup(IPlayer& player, IPickup& pickup) override
 	{
 		nlohmann::json args;
