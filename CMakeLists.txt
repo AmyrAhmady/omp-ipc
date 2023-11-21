@@ -45,8 +45,8 @@ conan_omp_add_lib(nng 1.5.2)
 
 file(GLOB_RECURSE OMPRPC_FILES
     ${CMAKE_SOURCE_DIR}/src/*.hpp
-    ${CMAKE_SOURCE_DIR}/*.h
-    ${CMAKE_SOURCE_DIR}/*.cpp
+    ${CMAKE_SOURCE_DIR}/src/*.h
+    ${CMAKE_SOURCE_DIR}/src/*.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${OMPRPC_FILES})
