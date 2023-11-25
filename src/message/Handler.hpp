@@ -119,14 +119,25 @@ public:
 																					 \
 	nlohmann::json MessageHandler_##name::Call(params, messageSocket)                \
 
-#define UNDEFINED_FAILED_RETURN "{\"ret_value\":undefined}"_json
-#define RETURN_VALUE(x) valueSetJsonReturnValue(x)
-#define NO_DATA_SUCCESS_RETURN "{\"ret_value\":true}"_json
+#define RETURN_VALUE(x) returnValue(x)
+#define UNDEFINED_FAILED_RETURN(x) returnError(x)
+#define FUNCTION_FAIL_RETURN returnError(this->name_ + ": error while executing.")
+#define NO_DATA_SUCCESS_RETURN returnValue(true)
 
 template<typename T>
-inline nlohmann::json valueSetJsonReturnValue(T value)
+inline nlohmann::json returnError(T value)
 {
-	nlohmann::json ret_value;
-	ret_value["ret_value"] = value;
-	return ret_value;
+	nlohmann::json obj;
+	obj["ret"]["error"] = value;
+	obj["ret"]["value"] = nullptr;
+	return obj;
+}
+
+template<typename T>
+inline nlohmann::json returnValue(T value)
+{
+	nlohmann::json obj;
+	obj["ret"]["error"] = nullptr;
+	obj["ret"]["value"] = value;
+	return obj;
 }
