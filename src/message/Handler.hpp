@@ -6,6 +6,30 @@
 
 class MessageSocket;
 
+#define RETURN_VALUE(x) returnValue(x)
+#define RETURN_ERROR(x) returnError(x)
+#define UNDEFINED_FAILED_RETURN(x) RETURN_ERROR("undefined error")
+#define FUNCTION_FAIL_RETURN RETURN_ERROR(this->name_ + ": error while executing.")
+#define NO_DATA_SUCCESS_RETURN RETURN_VALUE(true)
+
+template<typename T>
+inline nlohmann::json returnError(T value)
+{
+	nlohmann::json obj;
+	obj["ret"]["error"] = value;
+	obj["ret"]["value"] = nullptr;
+	return obj;
+}
+
+template<typename T>
+inline nlohmann::json returnValue(T value)
+{
+	nlohmann::json obj;
+	obj["ret"]["error"] = nullptr;
+	obj["ret"]["value"] = value;
+	return obj;
+}
+
 class MessageHandler
 {
 public:
@@ -36,7 +60,7 @@ public:
 		}
 		else
 		{
-			return "{\"ret_value\":\"handler_not_found\"}"_json;
+			return RETURN_ERROR("handler_not_found");
 		}
 	}
 
@@ -119,25 +143,3 @@ public:
 																					 \
 	nlohmann::json MessageHandler_##name::Call(params, messageSocket)                \
 
-#define RETURN_VALUE(x) returnValue(x)
-#define UNDEFINED_FAILED_RETURN(x) returnError(x)
-#define FUNCTION_FAIL_RETURN returnError(this->name_ + ": error while executing.")
-#define NO_DATA_SUCCESS_RETURN returnValue(true)
-
-template<typename T>
-inline nlohmann::json returnError(T value)
-{
-	nlohmann::json obj;
-	obj["ret"]["error"] = value;
-	obj["ret"]["value"] = nullptr;
-	return obj;
-}
-
-template<typename T>
-inline nlohmann::json returnValue(T value)
-{
-	nlohmann::json obj;
-	obj["ret"]["error"] = nullptr;
-	obj["ret"]["value"] = value;
-	return obj;
-}

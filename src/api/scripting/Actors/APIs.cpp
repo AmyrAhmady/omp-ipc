@@ -15,12 +15,12 @@ IPC_API(Actor_Create, const nlohmann::json& params)
 		if (actor)
 		{
 			nlohmann::json ret;
-			ret["ret_value"]["id"] = actor->getID();
-			ret["ret_value"]["actor"] = reinterpret_cast<uintptr_t>(actor);
-			return ret;
+			ret["id"] = actor->getID();
+			ret["actor"] = reinterpret_cast<uintptr_t>(actor);
+			return RETURN_VALUE(ret);
 		}
 	}
-	return UNDEFINED_FAILED_RETURN;
+	return FUNCTION_FAIL_RETURN;
 }
 
 IPC_API(Actor_Destroy, const nlohmann::json& params)
@@ -77,8 +77,9 @@ IPC_API(Actor_SetPos, const nlohmann::json& params)
 IPC_API(Actor_GetPos, const nlohmann::json& params)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	nlohmann::json ret;
 	const Vector3& pos = actor->getPosition();
+
+	nlohmann::json ret;
 	ret["x"] = pos.x;
 	ret["y"] = pos.y;
 	ret["z"] = pos.z;
@@ -127,7 +128,7 @@ IPC_API(Actor_IsInvulnerable, const nlohmann::json& params)
 IPC_API(Actor_IsValid, const nlohmann::json& params)
 {
 	if (OmpManager::Get()->actors == nullptr)
-		return "{\"ret_value\":{\"error\":\"Pool for IActor is unavailable.\"}}"_json;
+		return RETURN_ERROR("Pool for IActor is unavailable.");
 
 	IActor* actor = reinterpret_cast<IActor*>(uintptr_t(params["actor"]));
 	return RETURN_VALUE(actor != nullptr);

@@ -41,7 +41,7 @@ IPC_API(Pickup_Destroy, const nlohmann::json& params)
 IPC_API(Pickup_IsValid, const nlohmann::json& params)
 {
 	if (OmpManager::Get()->pickups == nullptr)
-		return "{\"ret_value\":{\"error\":\"Pool for IActor is unavailable.\"}}"_json;
+		return RETURN_ERROR("Pool for IActor is unavailable.");
 
 	IPickup* pickup = reinterpret_cast<IPickup*>(uintptr_t(params["pickup"]));
 	return RETURN_VALUE(pickup != nullptr);

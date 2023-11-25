@@ -64,7 +64,7 @@ inline PlayerDataType* GetPlayerData(IPlayer* player)
 /// Get player using provided player id, return fail_ret if not available
 #define GET_POOL_ENTITY_CHECKED(pool_instance, entity_type, entity_mem_addr, entity_output) \
 	if(pool_instance == nullptr) \
-		return "{\"ret_value\":{\"error\":\"Pool for " STRINGIFY(#entity_type) " is unavailable.\"}}"_json; \
+		return RETURN_ERROR("Pool for " STRINGIFY(#entity_type) " is unavailable."); \
 	entity_type* entity_output = reinterpret_cast<entity_type*>(uintptr_t(entity_mem_addr)); \
 	if(entity_output == nullptr) \
-		return "{\"ret_value\":{\"error\":\"Invalid " STRINGIFY(#entity_type) " entity pointer " STRINGIFY(#entity_mem_addr) ".\"}}"_json;
+		return RETURN_ERROR("Invalid " STRINGIFY(#entity_type) " entity pointer.");
