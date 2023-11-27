@@ -1,17 +1,12 @@
 #include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
 
-IPC_API(Actor_Create, const nlohmann::json& params)
+IPC_API(Actor_Create, int model, float x, float y, float z, float rot)
 {
 	IActorsComponent* component = OmpManager::Get()->actors;
 	if (component)
 	{
-		int modelid = params["model"];
-		float x = params["x"];
-		float y = params["y"];
-		float z = params["z"];
-		float rotation = params["rot"];
-		IActor* actor = component->create(modelid, { x, y ,z }, rotation);
+		IActor* actor = component->create(model, { x, y ,z }, rot);
 		if (actor)
 		{
 			nlohmann::json ret;
@@ -22,7 +17,7 @@ IPC_API(Actor_Create, const nlohmann::json& params)
 	}
 	return FUNCTION_FAIL_RETURN;
 }
-
+/*
 IPC_API(Actor_Destroy, const nlohmann::json& params)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
@@ -177,3 +172,4 @@ IPC_API(Actor_GetSpawnInfo, const nlohmann::json& params)
 	ret["skin"] = spawnData.skin;
 	return RETURN_VALUE(ret);
 }
+*/

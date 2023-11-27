@@ -1,6 +1,6 @@
 #include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
-
+/*
 IPC_API(Pickup_Create, const nlohmann::json& params)
 {
 	IPickupsComponent* component = OmpManager::Get()->pickups;
@@ -141,3 +141,4 @@ IPC_API(Pickup_IsHiddenForPlayer, const nlohmann::json& params)
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
 	return RETURN_VALUE(pickup->isPickupHiddenForPlayer(*player));
 }
+*/

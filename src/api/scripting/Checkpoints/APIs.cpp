@@ -1,6 +1,6 @@
 #include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
-
+/*
 IPC_API(Checkpoint_Set, const nlohmann::json& params)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
@@ -151,3 +151,4 @@ IPC_API(RaceCheckpoint_Get, const nlohmann::json& params)
 	}
 	return RETURN_VALUE(false);
 }
+*/
