@@ -10,51 +10,52 @@ IPC_API(Actor_Create, int model, float x, float y, float z, float rot)
 		if (actor)
 		{
 			nlohmann::json ret;
-			ret["id"] = actor->getID();
-			ret["actor"] = reinterpret_cast<uintptr_t>(actor);
-			return RETURN_VALUE(ret);
+			auto id = actor->getID();
+			auto ptr = reinterpret_cast<uintptr_t>(actor);
+			IPC_RETURN(int id, uintptr_t ptr);
 		}
 	}
 	return FUNCTION_FAIL_RETURN;
 }
-/*
-IPC_API(Actor_Destroy, const nlohmann::json& params)
+
+IPC_API(Actor_Destroy, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	OmpManager::Get()->actors->release(actor->getID());
-	return NO_DATA_SUCCESS_RETURN;
+	IPC_RETURN();
 }
 
-
-IPC_API(Actor_IsStreamedInFor, const nlohmann::json& params)
+IPC_API(Actor_IsStreamedInFor, uintptr_t ptr, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	return RETURN_VALUE(actor->isStreamedInForPlayer(*player));
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, forPlayer);
+	auto streamed = actor->isStreamedInForPlayer(*forPlayer);
+	IPC_RETURN(bool streamed);
 }
 
-IPC_API(Actor_SetVirtualWorld, const nlohmann::json& params)
+IPC_API(Actor_SetVirtualWorld, uintptr_t ptr, int vw)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	actor->setVirtualWorld(params["virtualWorld"]);
-	return NO_DATA_SUCCESS_RETURN;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	actor->setVirtualWorld(vw);
+	IPC_RETURN();
 }
 
-IPC_API(Actor_GetVirtualWorld, const nlohmann::json& params)
+IPC_API(Actor_GetVirtualWorld, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	return RETURN_VALUE(actor->getVirtualWorld());
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	auto vw = actor->getVirtualWorld();
+	IPC_RETURN(int vw);
 }
 
-IPC_API(Actor_ApplyAnimation, const nlohmann::json& params)
+IPC_API(Actor_ApplyAnimation, uintptr_t ptr, ConstStringRef name, ConstStringRef library, float delta, bool loop, bool lockX, bool lockY, bool freeze, int time)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	const AnimationData animationData(params["delta"], params["loop"], params["lockX"],
-		params["lockY"], params["freeze"], params["time"], params["library"], params["name"]);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	const AnimationData animationData(delta, loop, lockX, lockY, freeze, time, library, name);
 	actor->applyAnimation(animationData);
-	return NO_DATA_SUCCESS_RETURN;
+	IPC_RETURN();
 }
 
+/*
 IPC_API(Actor_ClearAnimations, const nlohmann::json& params)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
