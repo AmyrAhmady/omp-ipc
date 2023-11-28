@@ -1,154 +1,154 @@
 #include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
-/*
-IPC_API(Checkpoint_Set, const nlohmann::json& params)
+
+IPC_API(Checkpoint_Set, uintptr_t player, float x, float y, float z, float radius)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerCheckpointData)
 	{
 		ICheckpointData& cp = playerCheckpointData->getCheckpoint();
-		cp.setPosition({ params["x"], params["y"], params["z"] });
-		cp.setRadius(params["radius"]);
+		cp.setPosition({ x, y, z });
+		cp.setRadius(radius);
 		cp.enable();
-		return NO_DATA_SUCCESS_RETURN;
+		IPC_RETURN();
 	}
-	return RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(Checkpoint_Disable, const nlohmann::json& params)
+IPC_API(Checkpoint_Disable, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerCheckpointData)
 	{
 		ICheckpointData& cp = playerCheckpointData->getCheckpoint();
 		cp.disable();
-		return NO_DATA_SUCCESS_RETURN;
+		IPC_RETURN();
 	}
-	return RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(Checkpoint_IsPlayerIn, const nlohmann::json& params)
+IPC_API(Checkpoint_IsPlayerIn, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerCheckpointData)
 	{
 		ICheckpointData& cp = playerCheckpointData->getCheckpoint();
 		if (cp.isEnabled())
 		{
-			return RETURN_VALUE(cp.isPlayerInside());
+			auto isIn = cp.isPlayerInside();
+			IPC_RETURN(bool isIn);
 		}
 	}
-	return RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(RaceCheckpoint_Set, const nlohmann::json& params)
+IPC_API(Checkpoint_IsActive, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player_);
+	if (playerData)
+	{
+		auto active = playerData->getCheckpoint().isEnabled();
+		IPC_RETURN(bool active);
+	}
+	return FUNCTION_FAIL_RETURN;
+}
+
+IPC_API(Checkpoint_Get, uintptr_t player)
+{
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player_);
+	if (playerData)
+	{
+		const ICheckpointData& data = playerData->getCheckpoint();
+		auto x = data.getPosition().x;
+		auto y = data.getPosition().y;
+		auto z = data.getPosition().z;
+		auto radius = data.getRadius();
+		IPC_RETURN(float x, float y, float z, float radius);
+	}
+	return FUNCTION_FAIL_RETURN;
+}
+
+IPC_API(RaceCheckpoint_Set, uintptr_t player, int type, float x, float y, float z, float nextX, float nextY, float nextZ, float radius)
+{
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerCheckpointData)
 	{
 		IRaceCheckpointData& cp = playerCheckpointData->getRaceCheckpoint();
-		int type = params["type"];
 		if (type >= 0 && type <= 8)
 		{
 			cp.setType(RaceCheckpointType(type));
-			cp.setPosition({ params["x"], params["y"] , params["z"] });
-			cp.setNextPosition({ params["nextX"], params["nextY"] , params["nextZ"] });
-			cp.setRadius(params["radius"]);
+			cp.setPosition({ x, y, z });
+			cp.setNextPosition({ nextX, nextY, nextZ });
+			cp.setRadius(radius);
 			cp.enable();
-			return NO_DATA_SUCCESS_RETURN;
+			IPC_RETURN();
 		}
 	}
-	return RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(RaceCheckpoint_Disable, const nlohmann::json& params)
+IPC_API(RaceCheckpoint_Disable, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerCheckpointData)
 	{
 		IRaceCheckpointData& cp = playerCheckpointData->getRaceCheckpoint();
 		cp.disable();
-		return NO_DATA_SUCCESS_RETURN;
+		IPC_RETURN();
 	}
-	return RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(RaceCheckpoint_IsPlayerIn, const nlohmann::json& params)
+IPC_API(RaceCheckpoint_IsPlayerIn, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerCheckpointData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerCheckpointData)
 	{
 		IRaceCheckpointData& cp = playerCheckpointData->getRaceCheckpoint();
 		if (cp.getType() != RaceCheckpointType::RACE_NONE && cp.isEnabled())
 		{
-			return RETURN_VALUE(cp.isPlayerInside());
+			auto isIn = cp.isPlayerInside();
+			IPC_RETURN(bool isIn);
 		}
 	}
-	return  RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(Checkpoint_IsActive, const nlohmann::json& params)
+IPC_API(RaceCheckpoint_IsActive, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerData)
 	{
-		return RETURN_VALUE(playerData->getCheckpoint().isEnabled());
+		auto active = playerData->getCheckpoint().isEnabled();
+		IPC_RETURN(bool active);
 	}
-	return  RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(Checkpoint_Get, const nlohmann::json& params)
+IPC_API(RaceCheckpoint_Get, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player);
-	if (playerData)
-	{
-		const ICheckpointData& data = playerData->getCheckpoint();
-		nlohmann::json ret;
-		ret["x"] = data.getPosition().x;
-		ret["y"] = data.getPosition().y;
-		ret["z"] = data.getPosition().z;
-		ret["radius"] = data.getRadius();
-		return RETURN_VALUE(ret);
-	}
-	return  RETURN_VALUE(false);
-}
-
-IPC_API(RaceCheckpoint_IsActive, const nlohmann::json& params)
-{
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player);
-	if (playerData)
-	{
-		return RETURN_VALUE(playerData->getRaceCheckpoint().isEnabled());
-	}
-	return  RETURN_VALUE(false);
-}
-
-IPC_API(RaceCheckpoint_Get, const nlohmann::json& params)
-{
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, params["player"], player);
-	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
+	IPlayerCheckpointData* playerData = queryExtension<IPlayerCheckpointData>(player_);
 	if (playerData)
 	{
 		const IRaceCheckpointData& data = playerData->getRaceCheckpoint();
-		nlohmann::json ret;
-		ret["x"] = data.getPosition().x;
-		ret["y"] = data.getPosition().y;
-		ret["z"] = data.getPosition().z;
-		ret["nextX"] = data.getNextPosition().x;
-		ret["nextY"] = data.getNextPosition().y;
-		ret["nextZ"] = data.getNextPosition().z;
-		ret["radius"] = data.getRadius();
-		return RETURN_VALUE(ret);
+		auto x = data.getPosition().x;
+		auto y = data.getPosition().y;
+		auto z = data.getPosition().z;
+		auto nextX = data.getNextPosition().x;
+		auto nextY = data.getNextPosition().y;
+		auto nextZ = data.getNextPosition().z;
+		auto radius = data.getRadius();
+		IPC_RETURN(float x, float y, float z, float nextX, float nextY, float nextZ, float radius);
 	}
-	return RETURN_VALUE(false);
+	return FUNCTION_FAIL_RETURN;
 }
-*/
