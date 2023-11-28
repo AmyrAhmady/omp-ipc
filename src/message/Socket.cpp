@@ -226,7 +226,7 @@ bool MessageSocket::ProcessRequest()
 			}
 			else
 			{
-				SendResponse(RETURN_ERROR("invalid_format"));
+				SendResponse(RETURN_ERROR("invalid_format").dump());
 			}
 		}
 		catch (std::exception e) {

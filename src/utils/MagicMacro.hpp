@@ -191,16 +191,16 @@ using ConstStringRef = const std::string&;
 		nlohmann::json Call(const nlohmann::json& params, MessageSocket* messageSocket) override									\
 		{																															\
 			GENERATE_PARAMS_TO_DECLARE_VARS(__VA_ARGS__)																			\
-			return Call(GENERATE_PARAMS_TO_USE_IN_FUNCTION_CALL(__VA_ARGS__) messageSocket);										\
+			return CallOuter(GENERATE_PARAMS_TO_USE_IN_FUNCTION_CALL(__VA_ARGS__) messageSocket);									\
 		}																															\
 																																	\
 private:																															\
-		nlohmann::json Call(GENERATE_PARAMS_TO_USE_IN_FUNCTION_SIG(__VA_ARGS__), MessageSocket* messageSocket);						\
+		nlohmann::json CallOuter(GENERATE_PARAMS_TO_USE_IN_FUNCTION_SIG(__VA_ARGS__), MessageSocket* messageSocket);				\
 	};																																\
 																																	\
 	MessageHandler_##name ipc_api_##name;																							\
 																																	\
-	nlohmann::json MessageHandler_##name::Call(GENERATE_PARAMS_TO_USE_IN_FUNCTION_SIG(__VA_ARGS__), MessageSocket* messageSocket)	
+	nlohmann::json MessageHandler_##name::CallOuter(GENERATE_PARAMS_TO_USE_IN_FUNCTION_SIG(__VA_ARGS__), MessageSocket* messageSocket)	
 
 // name: name for IPC event sent from clients (other languages)
 // params: params in nlohmann::json object
