@@ -1,5 +1,6 @@
 #pragma once
 #include "../../utils/Singleton.hpp"
+#include "../../../message/Handler.hpp"
 #include "sdk.hpp"
 #include "component.hpp"
 #include <nlohmann/json.hpp>

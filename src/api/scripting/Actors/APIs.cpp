@@ -1,4 +1,3 @@
-#include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
 
 IPC_API(Actor_Create, int model, float x, float y, float z, float rot)
@@ -55,122 +54,124 @@ IPC_API(Actor_ApplyAnimation, uintptr_t ptr, ConstStringRef name, ConstStringRef
 	IPC_RETURN();
 }
 
-/*
-IPC_API(Actor_ClearAnimations, const nlohmann::json& params)
+IPC_API(Actor_ClearAnimations, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	actor->clearAnimations();
-	return NO_DATA_SUCCESS_RETURN;
+	IPC_RETURN();
 }
 
-IPC_API(Actor_SetPos, const nlohmann::json& params)
+IPC_API(Actor_SetPos, uintptr_t ptr, float x, float y, float z)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	actor->setPosition({ params["x"], params["y"], params["z"] });
-	return NO_DATA_SUCCESS_RETURN;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	actor->setPosition({ x, y, z });
+	IPC_RETURN();
 }
 
-IPC_API(Actor_GetPos, const nlohmann::json& params)
+IPC_API(Actor_GetPos, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	const Vector3& pos = actor->getPosition();
 
-	nlohmann::json ret;
-	ret["x"] = pos.x;
-	ret["y"] = pos.y;
-	ret["z"] = pos.z;
-	return RETURN_VALUE(ret);
+	auto x = pos.x;
+	auto y = pos.y;
+	auto z = pos.z;
+	IPC_RETURN(float x, float y, float z);
 }
 
-IPC_API(Actor_SetFacingAngle, const nlohmann::json& params)
+IPC_API(Actor_SetFacingAngle, uintptr_t ptr, float angle)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	actor->setRotation(Vector3(0.0f, 0.0f, params["angle"]));
-	return NO_DATA_SUCCESS_RETURN;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	actor->setRotation(Vector3(0.0f, 0.0f, angle));
+	IPC_RETURN();
 }
 
-IPC_API(Actor_GetFacingAngle, const nlohmann::json& params)
+IPC_API(Actor_GetFacingAngle, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	return RETURN_VALUE(actor->getRotation().ToEuler().z);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	auto angle = actor->getRotation().ToEuler().z;
+	IPC_RETURN(float angle);
 }
 
-IPC_API(Actor_SetHealth, const nlohmann::json& params)
+IPC_API(Actor_SetHealth, uintptr_t ptr, float hp)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	actor->setHealth(params["health"]);
-	return NO_DATA_SUCCESS_RETURN;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	actor->setHealth(hp);
+	IPC_RETURN();
 }
 
-IPC_API(Actor_GetHealth, const nlohmann::json& params)
+IPC_API(Actor_GetHealth, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	return RETURN_VALUE(actor->getHealth());
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	float hp = actor->getHealth();
+	IPC_RETURN(float hp);
 }
 
-IPC_API(Actor_SetInvulnerable, const nlohmann::json& params)
+IPC_API(Actor_SetInvulnerable, uintptr_t ptr, bool toggle)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	actor->setInvulnerable(params["invulnerable"]);
-	return NO_DATA_SUCCESS_RETURN;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	actor->setInvulnerable(toggle);
+	IPC_RETURN();
 }
 
-IPC_API(Actor_IsInvulnerable, const nlohmann::json& params)
+IPC_API(Actor_IsInvulnerable, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	return RETURN_VALUE(actor->isInvulnerable());
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	auto toggle = actor->isInvulnerable();
+	IPC_RETURN(bool toggle);
 }
 
-IPC_API(Actor_IsValid, const nlohmann::json& params)
+IPC_API(Actor_IsValid, uintptr_t ptr)
 {
 	if (OmpManager::Get()->actors == nullptr)
 		return RETURN_ERROR("Pool for IActor is unavailable.");
 
-	IActor* actor = reinterpret_cast<IActor*>(uintptr_t(params["actor"]));
-	return RETURN_VALUE(actor != nullptr);
+	IActor* actor = reinterpret_cast<IActor*>(ptr);
+	auto valid = actor != nullptr;
+	IPC_RETURN(bool valid);
 }
 
-IPC_API(Actor_SetSkin, const nlohmann::json& params)
+IPC_API(Actor_SetSkin, uintptr_t ptr, int skin)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	actor->setSkin(params["skin"]);
-	return NO_DATA_SUCCESS_RETURN;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	actor->setSkin(skin);
+	IPC_RETURN();
 }
 
-IPC_API(Actor_GetSkin, const nlohmann::json& params)
+IPC_API(Actor_GetSkin, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
-	return RETURN_VALUE(actor->getSkin());
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
+	auto skin = actor->getSkin();
+	IPC_RETURN(bool skin);
 }
 
-IPC_API(Actor_GetAnimation, const nlohmann::json& params)
+IPC_API(Actor_GetAnimation, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	const AnimationData& anim = actor->getAnimation();
 
 	nlohmann::json ret;
-	ret["library"] = anim.lib.data();
-	ret["name"] = anim.name.data();
-	ret["delta"] = anim.delta;
-	ret["loop"] = anim.loop;
-	ret["lockX"] = anim.lockX;
-	ret["lockY"] = anim.lockY;
-	ret["freeze"] = anim.freeze;
-	ret["time"] = anim.time;
-	return RETURN_VALUE(ret);
+	auto library = anim.lib.data();
+	auto name = anim.name.data();
+	auto delta = anim.delta;
+	auto loop = anim.loop;
+	auto lockX = anim.lockX;
+	auto lockY = anim.lockY;
+	auto freeze = anim.freeze;
+	auto time = anim.time;
+	IPC_RETURN(ConstStringRef library, ConstStringRef name, float delta, bool loop, bool lockX, bool lockY, bool freeze, int time);
 }
 
-IPC_API(Actor_GetSpawnInfo, const nlohmann::json& params)
+IPC_API(Actor_GetSpawnInfo, uintptr_t ptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, params["actor"], actor);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	const ActorSpawnData& spawnData = actor->getSpawnData();
 
 	nlohmann::json ret;
-	ret["x"] = spawnData.position.x;
-	ret["y"] = spawnData.position.y;
-	ret["z"] = spawnData.position.z;
-	ret["angle"] = spawnData.facingAngle;
-	ret["skin"] = spawnData.skin;
-	return RETURN_VALUE(ret);
+	auto x = spawnData.position.x;
+	auto y = spawnData.position.y;
+	auto z = spawnData.position.z;
+	auto angle = spawnData.facingAngle;
+	auto skin = spawnData.skin;
+	IPC_RETURN(float x, float y, float z, float angle, float skin);
 }
-*/
