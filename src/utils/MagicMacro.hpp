@@ -15,6 +15,7 @@ using ConstStringRef = const std::string&;
 #define SPLIT(OP, D) EXPAND2(OP CAT2(SPLIT_, D) RPAREN)
 
 #define SPLIT_int LPAREN int COMMA
+#define SPLIT_uint32_t LPAREN uint32_t COMMA
 #define SPLIT_bool LPAREN bool COMMA
 #define SPLIT_char LPAREN char COMMA
 #define SPLIT_float LPAREN float COMMA
