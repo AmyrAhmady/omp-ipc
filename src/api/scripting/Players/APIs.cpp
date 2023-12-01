@@ -390,103 +390,118 @@ IPC_API(Player_GetCameraPos, uintptr_t player)
 	float z = pos.z;
 	IPC_RETURN(float x, float y, float z);
 }
-/*
-IPC_API(GetPlayerDistanceFromPoint, float(IPlayer& player, Vector3 pos))
+
+IPC_API(Player_GetDistanceFromPoint, uintptr_t player, float x, float y, float z)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	Vector3 playerCoords = player_->getPosition();
-	return glm::distance(playerCoords, pos);
+	float distance = glm::distance(playerCoords, { x, y, z });
+	IPC_RETURN(float distance);
 }
 
-IPC_API(GetPlayerInterior, int(IPlayer& player))
+IPC_API(Player_GetInterior, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	return player_->getInterior();
+	int interior = player_->getInterior();
+	IPC_RETURN(int interior);
 }
 
-IPC_API(SetPlayerPos, bool(IPlayer& player, Vector3 vec))
+IPC_API(Player_SetPos, uintptr_t player, float x, float y, float z)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	player_->setPosition(vec);
-	return true;
+	player_->setPosition({ x, y, z });
+	IPC_RETURN();
 }
 
-IPC_API(GetPlayerPos, bool(IPlayer& player, Vector3& pos))
+IPC_API(Player_GetPos, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	pos = player_->getPosition();
-	return true;
+	auto pos = player_->getPosition();
+	float x = pos.x;
+	float y = pos.y;
+	float z = pos.z;
+	IPC_RETURN(float x, float y, float z);
 }
 
-IPC_API(GetPlayerVirtualWorld, int(IPlayer& player))
+IPC_API(Player_GetVirtualWorld, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	return player_->getVirtualWorld();
+	int vw = player_->getVirtualWorld();
+	IPC_RETURN(int vw);
 }
 
-IPC_API(IsPlayerNPC, bool(IPlayer* player))
+IPC_API(Player_IsNPC, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	return player != nullptr && player->isBot();
+	auto bot = player_->isBot();
+	IPC_RETURN(bool bot);
 }
 
-IPC_API(IsPlayerStreamedIn, bool(IPlayer& player, IPlayer& other))
+IPC_API(Player_IsStreamedIn, uintptr_t player, uintptr_t other)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	return player_->isStreamedInForPlayer(other);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, other, other_);
+	bool streamed = player_->isStreamedInForPlayer(*other_);
+	IPC_RETURN(bool streamed);
 }
 
-IPC_API(PlayerPlaySound, bool(IPlayer& player, uint32_t sound, Vector3 pos))
+IPC_API(Player_PlaySound, uintptr_t player, int sound, float x, float y, float z)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	player_->playSound(sound, pos);
-	return true;
+	player_->playSound(sound, { x, y, z });
+	IPC_RETURN();
 }
 
-IPC_API(PlayerSpectatePlayer, bool(IPlayer& player, IPlayer& target, int mode))
+IPC_API(Player_SpectatePlayer, uintptr_t player, uintptr_t target, int mode)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	player_->spectatePlayer(target, PlayerSpectateMode(mode));
-	return true;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, target, target_);
+	player_->spectatePlayer(*target_, PlayerSpectateMode(mode));
+	IPC_RETURN();
 }
 
-IPC_API(PlayerSpectateVehicle, bool(IPlayer& player, IVehicle& target, int mode))
+IPC_API(Player_SpectateVehicle, uintptr_t player, uintptr_t target, int mode)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	player_->spectateVehicle(target, PlayerSpectateMode(mode));
-	return true;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->vehicles, IVehicle, target, target_);
+	player_->spectateVehicle(*target_, PlayerSpectateMode(mode));
+	IPC_RETURN();
 }
 
-IPC_API(SetPlayerVirtualWorld, bool(IPlayer& player, int vw))
+IPC_API(Player_SetVirtualWorld, uintptr_t player, int vw)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setVirtualWorld(vw);
-	return true;
+	IPC_RETURN();
 }
 
-IPC_API(SetPlayerWorldBounds, bool(IPlayer& player, float xMax, float xMin, float yMax, float yMin))
+IPC_API(Player_SetWorldBounds, uintptr_t player, float xMax, float xMin, float yMax, float yMin)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	Vector4 coords = { xMax, xMin, yMax, yMin };
 	player_->setWorldBounds(coords);
-	return true;
+	IPC_RETURN();
 }
 
-IPC_API(ClearPlayerWorldBounds, bool(IPlayer& player))
+IPC_API(Player_ClearWorldBounds, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setWorldBounds(Vector4(MAX_WORLD_BOUNDS, MIN_WORLD_BOUNDS, MAX_WORLD_BOUNDS, MIN_WORLD_BOUNDS));
-	return true;
+	IPC_RETURN();
 }
 
-IPC_API(GetPlayerWorldBounds, bool(IPlayer& player, Vector4& bounds))
+IPC_API(Player_GetWorldBounds, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	bounds = player_->getWorldBounds();
-	return true;
+	auto bounds = player_->getWorldBounds();
+	float xmax = bounds.x;
+	float xmin = bounds.y;
+	float ymax = bounds.z;
+	float ymin = bounds.w;
+	IPC_RETURN(float xmax, float xmin, float ymax, float ymin);
 }
 
-IPC_API(ClearAnimations, bool(IPlayer& player, int syncType))
+IPC_API(ClearAnimations, uintptr_t player, int syncType)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	// TODO: This must be fixed on client side
@@ -495,115 +510,103 @@ IPC_API(ClearAnimations, bool(IPlayer& player, int syncType))
 	// And it doesn't just clear applied animations, in order to keep it compatible with
 	// Current samp scripts without requiring a change, we call IPlayer::clearTasks temporarily.
 	player_->clearTasks(PlayerAnimationSyncType(syncType));
-	return true;
+	IPC_RETURN();
 }
 
-IPC_API(GetPlayerLastShotVectors, bool(IPlayer& player, Vector3& origin, Vector3& hitPos))
+IPC_API(Player_GetLastShotVectors, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	PlayerBulletData data = player_->getBulletData();
-	origin = data.origin;
-	hitPos = data.hitPos;
-	return true;
+	auto origin = data.origin;
+	auto hitPos = data.hitPos;
+
+	float origin_x = origin.x;
+	float origin_y = origin.y;
+	float origin_z = origin.z;
+
+	float hit_x = hitPos.x;
+	float hit_y = hitPos.y;
+	float hit_z = hitPos.z;
+
+	IPC_RETURN(float origin_x, float origin_y, float origin_z, float hit_x, float hit_y, float hit_z);
 }
 
-IPC_API_FAILRET(GetPlayerCameraTargetPlayer, INVALID_PLAYER_ID, int(IPlayer& player))
+IPC_API(Player_GetCameraTargetPlayer, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	IPlayer* target = player_->getCameraTargetPlayer();
-	if (target)
-	{
-		return target->getID();
-	}
-	return FailRet;
+	auto target = uintptr_t(player_->getCameraTargetPlayer());
+	IPC_RETURN(uintptr_t target);
 }
 
-IPC_API_FAILRET(GetPlayerCameraTargetActor, INVALID_ACTOR_ID, int(IPlayer& player))
+IPC_API(Player_GetCameraTargetActor, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	IActor* target = player_->getCameraTargetActor();
-	if (target)
-	{
-		return target->getID();
-	}
-	return FailRet;
+	auto target = uintptr_t(player_->getCameraTargetActor());
+	IPC_RETURN(uintptr_t target);
 }
 
-IPC_API_FAILRET(GetPlayerCameraTargetObject, INVALID_OBJECT_ID, int(IPlayer& player))
+IPC_API(Player_GetCameraTargetObject, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	IObject* target = player_->getCameraTargetObject();
-	if (target)
-	{
-		return target->getID();
-	}
-	return FailRet;
+	auto target = uintptr_t(player_->getCameraTargetObject());
+	IPC_RETURN(uintptr_t target);
 }
 
-IPC_API_FAILRET(GetPlayerCameraTargetVehicle, INVALID_VEHICLE_ID, int(IPlayer& player))
+IPC_API(Player_GetCameraTargetVehicle, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	IVehicle* target = player_->getCameraTargetVehicle();
-	if (target)
-	{
-		return target->getID();
-	}
-	return FailRet;
+	auto target = uintptr_t(player_->getCameraTargetVehicle());
+	IPC_RETURN(uintptr_t target);
 }
 
-IPC_API(IsPlayerConnected, bool(IPlayer* player))
+IPC_API(Player_PutInVehicle, uintptr_t player, uintptr_t vehicle, int seat)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	return player != nullptr;
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->vehicles, IVehicle, vehicle, vehicle_);
+	vehicle_->putPlayer(*player_, seat);
+	IPC_RETURN();
 }
 
-IPC_API(PutPlayerInVehicle, bool(IPlayer& player, IVehicle& vehicle, int seatID))
+IPC_API(Player_RemoveBuilding, uintptr_t player, int model, float x, float y, float z, float radius)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	vehicle.putPlayer(player, seatID);
-	return true;
+	player_->removeDefaultObjects(model, { x, y, z }, radius);
+	IPC_RETURN();
 }
 
-IPC_API(RemoveBuildingForPlayer, bool(IPlayer& player, uint32_t model, Vector3 pos, float radius))
+IPC_API(Player_GetBuildingsRemoved, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	player_->removeDefaultObjects(model, pos, radius);
-	return true;
+	bool count = player_->getDefaultObjectsRemoved();
+	IPC_RETURN(bool count);
 }
 
-IPC_API(GetPlayerBuildingsRemoved, int(IPlayer& player))
+IPC_API(Player_RemoveFromVehicle, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	return player_->getDefaultObjectsRemoved();
+	player_->removeFromVehicle(false);
+	IPC_RETURN();
 }
 
-IPC_API(RemovePlayerFromVehicle, bool(IPlayer& player))
+IPC_API(Player_RemoveMapIcon, uintptr_t player, int icon)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	cell* args = GetParams();
-	player_->removeFromVehicle(args[0] == 2 * sizeof(cell) && args[2]);
-	return true;
+	player_->unsetMapIcon(icon);
+	IPC_RETURN();
 }
-
-IPC_API(RemovePlayerMapIcon, bool(IPlayer& player, int iconID))
-{
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	player_->unsetMapIcon(iconID);
-	return true;
-}
-
+/*
 IPC_API(SetPlayerMapIcon, bool(IPlayer& player, int iconID, Vector3 pos, int type, uint32_t colour, int style))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setMapIcon(iconID, pos, type, Colour::FromRGBA(colour), MapIconStyle(style));
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(ResetPlayerWeapons, bool(IPlayer& player))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->resetWeapons();
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(SetPlayerAmmo, bool(IPlayer& player, uint8_t id, uint32_t ammo))
@@ -613,14 +616,14 @@ IPC_API(SetPlayerAmmo, bool(IPlayer& player, uint8_t id, uint32_t ammo))
 	data.id = id;
 	data.ammo = ammo;
 	player_->setWeaponAmmo(data);
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(SetPlayerArmedWeapon, bool(IPlayer& player, uint8_t weapon))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setArmedWeapon(weapon);
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(SetPlayerChatBubble, bool(IPlayer& player, cell const* format, uint32_t colour, float drawdistance, int expiretime))
@@ -628,42 +631,42 @@ IPC_API(SetPlayerChatBubble, bool(IPlayer& player, cell const* format, uint32_t 
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	AmxStringFormatter text(format, GetAMX(), GetParams(), 5);
 	player_->setChatBubble(text, Colour::FromRGBA(colour), drawdistance, std::chrono::milliseconds(expiretime));
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(SetPlayerPosFindZ, bool(IPlayer& player, Vector3 pos))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setPositionFindZ(pos);
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(SetPlayerSkillLevel, bool(IPlayer& player, uint8_t weapon, int level))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setSkillLevel(PlayerWeaponSkill(weapon), level);
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(SetPlayerSpecialAction, bool(IPlayer& player, uint32_t action))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setAction(PlayerSpecialAction(action));
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(ShowPlayerNameTagForPlayer, bool(IPlayer& player, IPlayer& other, bool enable))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->toggleOtherNameTag(other, enable);
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(TogglePlayerControllable, bool(IPlayer& player, bool enable))
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	player_->setControllable(enable);
-	return true;
+	IPC_RETURN();
 }
 
 IPC_API(TogglePlayerSpectating, bool(IPlayer& player, bool enable))
