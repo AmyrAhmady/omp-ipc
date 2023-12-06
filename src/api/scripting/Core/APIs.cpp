@@ -1,13 +1,13 @@
 #include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
 
-IPC_API(GetTickCount)
+IPC_API(TickCount_Get)
 {
 	auto tick = OmpManager::Get()->core->getTickCount();
 	IPC_RETURN(int tick);
 }
 
-IPC_API(GetMaxPlayers)
+IPC_API(MaxPlayers_Get)
 {
 	int max = *OmpManager::Get()->core->getConfig().getInt("max_players");
 	IPC_RETURN(int max);
@@ -49,7 +49,7 @@ IPC_API(floatstr, ConstStringRef string)
 	IPC_RETURN(float value);
 }
 
-IPC_API(GetPlayerPoolSize)
+IPC_API(PlayerPoolSize_Get)
 {
 	int highestID = -1;
 	for (IPlayer* player : OmpManager::Get()->players->entries())
@@ -62,7 +62,7 @@ IPC_API(GetPlayerPoolSize)
 	IPC_RETURN(int highestID);
 }
 
-IPC_API(GetVehiclePoolSize)
+IPC_API(VehiclePoolSize_Get)
 {
 	IVehiclesComponent* vehicles = OmpManager::Get()->vehicles;
 	if (vehicles)
@@ -80,7 +80,7 @@ IPC_API(GetVehiclePoolSize)
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(GetActorPoolSize)
+IPC_API(ActorPoolSize_Get)
 {
 	IActorsComponent* actors = OmpManager::Get()->actors;
 	if (actors)
@@ -185,43 +185,43 @@ IPC_API(print, ConstStringRef text)
 	IPC_RETURN();
 }
 
-IPC_API(IsAdminTeleportAllowed)
+IPC_API(AdminTeleport_IsAllowed)
 {
 	bool allowed = *OmpManager::Get()->config->getBool("rcon.allow_teleport");
 	IPC_RETURN(bool allowed);
 }
 
-IPC_API(AllowAdminTeleport, bool allow)
+IPC_API(AdminTeleport_Allow, bool allow)
 {
 	*OmpManager::Get()->config->getBool("rcon.allow_teleport") = allow;
 	IPC_RETURN();
 }
 
-IPC_API(AreAllAnimationsEnabled)
+IPC_API(AllAnimations_AreEnabled)
 {
 	bool allowed = *OmpManager::Get()->config->getBool("game.use_all_animations");
 	IPC_RETURN(bool allowed);
 }
 
-IPC_API(EnableAllAnimations, bool allow)
+IPC_API(AllAnimations_Enable, bool allow)
 {
 	*OmpManager::Get()->config->getBool("game.use_all_animations") = allow;
 	IPC_RETURN();
 }
 
-IPC_API(IsValidAnimationLibrary, ConstStringRef name)
+IPC_API(AnimationLibrary_IsValid, ConstStringRef name)
 {
 	auto valid = animationLibraryValid(name, true);
 	IPC_RETURN(bool valid);
 }
 
-IPC_API(AreInteriorWeaponsAllowed)
+IPC_API(InteriorWeapons_AreAllowed)
 {
 	bool allowed = *OmpManager::Get()->config->getBool("game.allow_interior_weapons");
 	IPC_RETURN(bool allowed);
 }
 
-IPC_API(AllowInteriorWeapons, bool allow)
+IPC_API(InteriorWeapons_Allow, bool allow)
 {
 	if (allow)
 	{
@@ -245,7 +245,7 @@ IPC_API(AllowInteriorWeapons, bool allow)
 	IPC_RETURN();
 }
 
-IPC_API(BlockIpAddress, ConstStringRef ipAddress, int timeMS)
+IPC_API(IpAddress_Block, ConstStringRef ipAddress, int timeMS)
 {
 	if (ipAddress.empty())
 	{
@@ -259,7 +259,7 @@ IPC_API(BlockIpAddress, ConstStringRef ipAddress, int timeMS)
 	IPC_RETURN();
 }
 
-IPC_API(UnBlockIpAddress, ConstStringRef ipAddress)
+IPC_API(IpAddress_UnBlock, ConstStringRef ipAddress)
 {
 	BanEntry entry(ipAddress);
 	for (INetwork* network : OmpManager::Get()->core->getNetworks())
@@ -269,43 +269,37 @@ IPC_API(UnBlockIpAddress, ConstStringRef ipAddress)
 	IPC_RETURN();
 }
 
-IPC_API(ConnectNPC, ConstStringRef name, ConstStringRef script)
+IPC_API(NPC_Connect, ConstStringRef name, ConstStringRef script)
 {
 	OmpManager::Get()->core->connectBot(name, script);
 	IPC_RETURN();
 }
 
-IPC_API(DisableInteriorEnterExits)
+IPC_API(EntryExitMarkers_Disable)
 {
 	*OmpManager::Get()->config->getBool("game.use_entry_exit_markers") = false;
 	IPC_RETURN();
 }
 
-IPC_API(DisableNameTagLOS)
+IPC_API(NameTags_DisableLOS)
 {
 	*OmpManager::Get()->config->getBool("game.use_nametag_los") = false;
 	IPC_RETURN();
 }
 
-IPC_API(EnableTirePopping, bool enable)
-{
-	OmpManager::Get()->core->logLn(LogLevel::Warning, "EnableTirePopping() function is removed.");
-	IPC_RETURN();
-}
-
-IPC_API(EnableZoneNames, bool enable)
+IPC_API(ZoneNames_Enable, bool enable)
 {
 	*OmpManager::Get()->config->getBool("game.use_zone_names") = enable;
 	IPC_RETURN();
 }
 
-IPC_API(GameModeExit)
+IPC_API(GameMode_Exit)
 {
 	OmpManager::Get()->EndMainScript();
 	IPC_RETURN();
 }
 
-IPC_API(GameTextForAll, ConstStringRef msg, int time, int style)
+IPC_API(GameText_ShowForAll, ConstStringRef msg, int time, int style)
 {
 	if (msg.empty())
 	{
@@ -315,7 +309,7 @@ IPC_API(GameTextForAll, ConstStringRef msg, int time, int style)
 	IPC_RETURN();
 }
 
-IPC_API(HideGameTextForAll, int style)
+IPC_API(GameText_HideForAll, int style)
 {
 	OmpManager::Get()->players->hideGameTextForAll(style);
 	IPC_RETURN();
@@ -461,32 +455,32 @@ int getConfigOptionAsString(ConstStringRef cvar, StringRef buffer)
 	return std::get<StringView>(buffer).length();
 }
 
-IPC_API(GetConsoleVarAsBool, ConstStringRef cvar)
+IPC_API(ConsoleVar_GetAsBool, ConstStringRef cvar)
 {
 	bool value = getConfigOptionAsBool(cvar);
 	IPC_RETURN(bool value);
 }
 
-IPC_API(GetConsoleVarAsInt, ConstStringRef cvar)
+IPC_API(ConsoleVar_GetAsInt, ConstStringRef cvar)
 {
 	int value = getConfigOptionAsInt(cvar);
 	IPC_RETURN(int value);
 }
 
-IPC_API(GetConsoleVarAsFloat, ConstStringRef cvar)
+IPC_API(ConsoleVar_GetAsFloat, ConstStringRef cvar)
 {
 	float value = getConfigOptionAsFloat(cvar);
 	IPC_RETURN(float value);
 }
 
-IPC_API(GetConsoleVarAsString, ConstStringRef cvar)
+IPC_API(ConsoleVar_GetAsString, ConstStringRef cvar)
 {
 	StringRef value = "";
 	int len = getConfigOptionAsString(cvar, value);
 	IPC_RETURN(StringRef value, int len);
 }
 
-IPC_API(GetNetworkStats)
+IPC_API(NetworkStats_Get)
 {
 	std::stringstream stream;
 	NetworkStats stats;
@@ -554,58 +548,58 @@ IPC_API(Player_GetNetworkStats, uintptr_t player)
 	IPC_RETURN(ConstStringRef output);
 }
 
-IPC_API(GetServerTickRate)
+IPC_API(ServerTickRate_Get)
 {
 	int tick = OmpManager::Get()->core->tickRate();
 	IPC_RETURN(int tick);
 }
 
-IPC_API(GetServerVarAsBool, ConstStringRef cvar)
+IPC_API(ServerVar_GetAsBool, ConstStringRef cvar)
 {
 	bool value = getConfigOptionAsBool(cvar);
 	IPC_RETURN(bool value);
 }
 
-IPC_API(GetServerVarAsInt, ConstStringRef cvar)
+IPC_API(ServerVar_GetAsInt, ConstStringRef cvar)
 {
 	int value = getConfigOptionAsInt(cvar);
 	IPC_RETURN(int value);
 }
 
-IPC_API(GetServerVarAsFloat, ConstStringRef cvar)
+IPC_API(ServerVar_GetAsFloat, ConstStringRef cvar)
 {
 	float value = getConfigOptionAsFloat(cvar);
 	IPC_RETURN(float value);
 }
 
-IPC_API(GetServerVarAsString, ConstStringRef cvar)
+IPC_API(ServerVar_GetAsString, ConstStringRef cvar)
 {
 	StringRef value = "";
 	int len = getConfigOptionAsString(cvar, value);
 	IPC_RETURN(StringRef value, int len);
 }
 
-IPC_API(GetWeaponName, int weaponid)
+IPC_API(Weapon_GetName, int weaponid)
 {
 	ConstStringRef weapon = OmpManager::Get()->core->getWeaponName(PlayerWeapon(weaponid));
 	IPC_RETURN(ConstStringRef weapon);
 }
 
-IPC_API(LimitGlobalChatRadius, float chatRadius)
+IPC_API(Chat_SetRadius, float globalChatRadius)
 {
 	*OmpManager::Get()->config->getBool("game.use_chat_radius") = true;
-	*OmpManager::Get()->config->getFloat("game.chat_radius") = chatRadius;
+	*OmpManager::Get()->config->getFloat("game.chat_radius") = globalChatRadius;
 	IPC_RETURN();
 }
 
-IPC_API(LimitPlayerMarkerRadius, float markerRadius)
+IPC_API(Marker_SetRadius, float playerMarkerRadius)
 {
 	*OmpManager::Get()->config->getBool("game.use_player_marker_draw_radius") = true;
-	*OmpManager::Get()->config->getFloat("game.player_marker_draw_radius") = markerRadius;
+	*OmpManager::Get()->config->getFloat("game.player_marker_draw_radius") = playerMarkerRadius;
 	IPC_RETURN();
 }
 
-IPC_API(NetStats_BytesReceived, uintptr_t player)
+IPC_API(Player_NetStatsBytesReceived, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -613,7 +607,7 @@ IPC_API(NetStats_BytesReceived, uintptr_t player)
 	IPC_RETURN(int bytes);
 }
 
-IPC_API(NetStats_BytesSent, uintptr_t player)
+IPC_API(Player_NetStatsBytesSent, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -621,7 +615,7 @@ IPC_API(NetStats_BytesSent, uintptr_t player)
 	IPC_RETURN(int bytes);
 }
 
-IPC_API(NetStats_ConnectionStatus, uintptr_t player)
+IPC_API(Player_NetStatsConnectionStatus, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -629,7 +623,7 @@ IPC_API(NetStats_ConnectionStatus, uintptr_t player)
 	IPC_RETURN(int status);
 }
 
-IPC_API(NetStats_GetConnectedTime, uintptr_t player)
+IPC_API(Player_NetStatsGetConnectedTime, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -637,7 +631,7 @@ IPC_API(NetStats_GetConnectedTime, uintptr_t player)
 	IPC_RETURN(int milliseconds);
 }
 
-IPC_API(NetStats_GetIpPort, uintptr_t player)
+IPC_API(Player_NetStatsGetIpPort, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	PeerNetworkData data = player_->getNetworkData();
@@ -654,7 +648,7 @@ IPC_API(NetStats_GetIpPort, uintptr_t player)
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(NetStats_MessagesReceived, uintptr_t player)
+IPC_API(Player_NetStatsMessagesReceived, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -662,7 +656,7 @@ IPC_API(NetStats_MessagesReceived, uintptr_t player)
 	IPC_RETURN(int received);
 }
 
-IPC_API(NetStats_MessagesRecvPerSecond, uintptr_t player)
+IPC_API(Player_NetStatsMessagesRecvPerSecond, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -670,7 +664,7 @@ IPC_API(NetStats_MessagesRecvPerSecond, uintptr_t player)
 	IPC_RETURN(int received);
 }
 
-IPC_API(NetStats_MessagesSent, uintptr_t player)
+IPC_API(Player_NetStatsMessagesSent, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -678,7 +672,7 @@ IPC_API(NetStats_MessagesSent, uintptr_t player)
 	IPC_RETURN(int sent);
 }
 
-IPC_API(NetStats_PacketLossPercent, uintptr_t player)
+IPC_API(Player_NetStatsPacketLossPercent, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
 	NetworkStats stats = player_->getNetworkData().network->getStatistics(&player_);
@@ -686,14 +680,14 @@ IPC_API(NetStats_PacketLossPercent, uintptr_t player)
 	IPC_RETURN(float packetLoss);
 }
 
-IPC_API(SendPlayerMessageToAll, uintptr_t sender, ConstStringRef message)
+IPC_API(Player_SendMessageToAll, uintptr_t sender, ConstStringRef message)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, sender, sender_);
 	OmpManager::Get()->players->sendChatMessageToAll(sender_, message);
 	IPC_RETURN();
 }
 
-IPC_API(SendRconCommand, ConstStringRef command)
+IPC_API(Rcon_SendCommand, ConstStringRef command)
 {
 	IConsoleComponent* console = OmpManager::Get()->console;
 	if (console)
@@ -703,114 +697,109 @@ IPC_API(SendRconCommand, ConstStringRef command)
 	IPC_RETURN();
 }
 
-IPC_API(SetDeathDropAmount, int amount)
+IPC_API(DeathDrop_SetAmount, int amount)
 {
 	*OmpManager::Get()->config->getInt("game.death_drop_amount") = amount;
 	IPC_RETURN();
 }
 
-IPC_API(SetGameModeText, ConstStringRef string)
+IPC_API(GameMode_SetText, ConstStringRef string)
 {
 	OmpManager::Get()->core->setData(SettableCoreDataType::ModeText, string);
 	IPC_RETURN();
 }
 
-IPC_API(SetGravity, float gravity)
+IPC_API(Gravity_Set, float gravity)
 {
 	OmpManager::Get()->core->setGravity(gravity);
 	IPC_RETURN();
 }
 
-IPC_API(GetGravity)
+IPC_API(Gravity_Get)
 {
 	float gravity = OmpManager::Get()->core->getGravity();
 	IPC_RETURN(float gravity);
 }
 
-IPC_API(SetNameTagDrawDistance, float distance)
+IPC_API(NameTags_SetDrawDistance, float distance)
 {
 	*OmpManager::Get()->config->getFloat("game.nametag_draw_radius") = distance;
 	IPC_RETURN();
 }
 
-IPC_API(SetTeamCount, int count)
-{
-	IPC_RETURN();
-}
-
-IPC_API(SetWeather, int weatherid)
+IPC_API(Weather_Set, int weatherid)
 {
 	OmpManager::Get()->core->setWeather(weatherid);
 	IPC_RETURN();
 }
 
-IPC_API(SetWorldTime, int hour)
+IPC_API(WorldTime_Set, int hour)
 {
 	OmpManager::Get()->core->setWorldTime(Hours(hour));
 	IPC_RETURN();
 }
 
-IPC_API(ShowNameTags, bool show)
+IPC_API(NameTags_Show, bool show)
 {
 	*OmpManager::Get()->config->getBool("game.use_nametags") = show;
 	IPC_RETURN();
 }
 
-IPC_API(ShowPlayerMarkers, int mode)
+IPC_API(PlayerMarkers_Show, int mode)
 {
 	*OmpManager::Get()->config->getInt("game.player_marker_mode") = mode;
 	IPC_RETURN();
 }
 
-IPC_API(UsePlayerPedAnims)
+IPC_API(All_UsePedAnims)
 {
 	*OmpManager::Get()->config->getBool("game.use_player_ped_anims") = true;
 	IPC_RETURN();
 }
 
-IPC_API(GetWeather)
+IPC_API(Weather_Get)
 {
 	int weatherid = *OmpManager::Get()->config->getInt("game.weather");
 	IPC_RETURN(int weatherid);
 }
 
-IPC_API(GetWorldTime)
+IPC_API(WorldTime_Get)
 {
 	int hour = *OmpManager::Get()->config->getInt("game.time");
 	IPC_RETURN(int hour);
 }
 
-IPC_API(ToggleChatTextReplacement, bool enable)
+IPC_API(Chat_ToggleTextReplacement, bool enable)
 {
 	*OmpManager::Get()->config->getBool("chat_input_filter") = enable;
 	IPC_RETURN();
 }
 
-IPC_API(ChatTextReplacementToggled)
+IPC_API(Chat_IsTextReplacementToggled)
 {
 	bool toggled = *OmpManager::Get()->config->getBool("chat_input_filter");
 	IPC_RETURN(bool toggled);
 }
 
-IPC_API(IsValidNickName, ConstStringRef name)
+IPC_API(NickName_IsValid, ConstStringRef name)
 {
 	auto valid = OmpManager::Get()->players->isNameValid(name);
 	IPC_RETURN(bool valid);
 }
 
-IPC_API(AllowNickNameCharacter, int character, bool allow)
+IPC_API(NickName_AllowCharacter, int character, bool allow)
 {
 	OmpManager::Get()->players->allowNickNameCharacter(character, allow);
 	IPC_RETURN();
 }
 
-IPC_API(IsNickNameCharacterAllowed, char character)
+IPC_API(NickName_IsCharacterAllowed, char character)
 {
 	bool allowed = OmpManager::Get()->players->isNickNameCharacterAllowed(character);
 	IPC_RETURN(bool allowed);
 }
 
-IPC_API(ClearBanList)
+IPC_API(BanList_Clear)
 {
 	ICore* core = OmpManager::Get()->core;
 	if (!core)
@@ -822,7 +811,7 @@ IPC_API(ClearBanList)
 	IPC_RETURN();
 }
 
-IPC_API(IsBanned, ConstStringRef ip)
+IPC_API(IpAddress_IsBanned, ConstStringRef ip)
 {
 	ICore* core = OmpManager::Get()->core;
 	if (!core)
@@ -834,13 +823,13 @@ IPC_API(IsBanned, ConstStringRef ip)
 	IPC_RETURN(bool isBanned);
 }
 
-IPC_API(GetWeaponSlot, uint8_t weapon)
+IPC_API(Weapon_GetSlot, uint8_t weapon)
 {
 	int slot = WeaponSlotData { weapon }.slot();
 	IPC_RETURN(int slot);
 }
 
-IPC_API(AddServerRule, ConstStringRef name, ConstStringRef value)
+IPC_API(Server_AddRule, ConstStringRef name, ConstStringRef value)
 {
 	ICore* core = OmpManager::Get()->core;
 	if (!core)
@@ -861,7 +850,7 @@ IPC_API(AddServerRule, ConstStringRef name, ConstStringRef value)
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(IsValidServerRule, ConstStringRef name)
+IPC_API(Server_IsValidRule, ConstStringRef name)
 {
 	ICore* core = OmpManager::Get()->core;
 	if (!core)
@@ -882,7 +871,7 @@ IPC_API(IsValidServerRule, ConstStringRef name)
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(RemoveServerRule, ConstStringRef name)
+IPC_API(Server_RemoveRule, ConstStringRef name)
 {
 	ICore* core = OmpManager::Get()->core;
 	if (!core)
@@ -903,7 +892,7 @@ IPC_API(RemoveServerRule, ConstStringRef name)
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(GetRunningTimers)
+IPC_API(RunningTimers_Get)
 {
 	ITimersComponent* timers = OmpManager::Get()->timers;
 	int count = timers == nullptr ? 0 : timers->count();
