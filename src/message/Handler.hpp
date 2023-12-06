@@ -1,3 +1,4 @@
+#pragma once
 #include <robin_hood.h>
 #include <nlohmann/json.hpp>
 #include <algorithm>
