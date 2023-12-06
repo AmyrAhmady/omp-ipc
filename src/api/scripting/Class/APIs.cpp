@@ -68,7 +68,7 @@ IPC_API(Player_GetSpawnInfo, uintptr_t player)
 	IPC_RETURN();
 }
 
-IPC_API(Class_GetAvailableClasses)
+IPC_API(Class_Count)
 {
 	IClassesComponent* component = OmpManager::Get()->classes;
 	if (component)
