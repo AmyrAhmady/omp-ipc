@@ -37,6 +37,9 @@ void OmpManager::Init(ICore* c, IComponentList* clist)
 	pickups = GetComponent<IPickupsComponent>();
 	textlabels = GetComponent<ITextLabelsComponent>();
 	vehicles = GetComponent<IVehiclesComponent>();
+	classes = GetComponent<IClassesComponent>();
+	console = GetComponent<IConsoleComponent>();
+	timers = GetComponent<ITimersComponent>();
 }
 
 void OmpManager::AddEvents()

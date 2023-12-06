@@ -1,6 +1,6 @@
 #pragma once
 #include "../../utils/Singleton.hpp"
-#include "../../../message/Handler.hpp"
+#include "../../message/Handler.hpp"
 #include "sdk.hpp"
 #include "component.hpp"
 #include <nlohmann/json.hpp>
@@ -10,6 +10,9 @@
 #include "Server/Components/Vehicles/vehicles.hpp"
 #include "Server/Components/Checkpoints/checkpoints.hpp"
 #include "Server/Components/Actors/actors.hpp"
+#include "Server/Components/Classes/classes.hpp"
+#include "Server/Components/Console/console.hpp"
+#include "Server/Components/Timers/timers.hpp"
 
 #define STRINGIFY2(X) #X
 #define STRINGIFY(X) STRINGIFY2(X)
@@ -39,15 +42,18 @@ public:
 		return componentList->queryComponent<ComponentType>();
 	}
 
+	ICore* core = nullptr;
 	IPlayerPool* players = nullptr;
 	IPickupsComponent* pickups = nullptr;
 	IObjectsComponent* objects = nullptr;
 	ITextLabelsComponent* textlabels = nullptr;
 	IVehiclesComponent* vehicles = nullptr;
 	IActorsComponent* actors = nullptr;
+	IClassesComponent* classes = nullptr;
+	IConsoleComponent* console = nullptr;
+	ITimersComponent* timers = nullptr;
 
 private:
-	ICore* core = nullptr;
 	IComponentList* componentList = nullptr;
 };
 
