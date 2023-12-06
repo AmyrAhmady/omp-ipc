@@ -49,54 +49,6 @@ IPC_API(floatstr, ConstStringRef string)
 	IPC_RETURN(float value);
 }
 
-IPC_API(PlayerPoolSize_Get)
-{
-	int highestID = -1;
-	for (IPlayer* player : OmpManager::Get()->players->entries())
-	{
-		if (highestID < player->getID())
-		{
-			highestID = player->getID();
-		}
-	}
-	IPC_RETURN(int highestID);
-}
-
-IPC_API(VehiclePoolSize_Get)
-{
-	IVehiclesComponent* vehicles = OmpManager::Get()->vehicles;
-	if (vehicles)
-	{
-		int highestID = -1;
-		for (IVehicle* vehicle : *vehicles)
-		{
-			if (highestID < vehicle->getID())
-			{
-				highestID = vehicle->getID();
-			}
-		}
-		IPC_RETURN(int highestID);
-	}
-	return FUNCTION_FAIL_RETURN;
-}
-
-IPC_API(ActorPoolSize_Get)
-{
-	IActorsComponent* actors = OmpManager::Get()->actors;
-	if (actors)
-	{
-		int highestID = -1;
-		for (IActor* actor : *actors)
-		{
-			if (highestID < actor->getID())
-			{
-				highestID = actor->getID();
-			}
-		}
-		IPC_RETURN(int highestID);
-	}
-	return FUNCTION_FAIL_RETURN;
-}
 /*
 // TODO: Can't return array with json
 
