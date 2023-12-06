@@ -1,4 +1,3 @@
-#include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
 
 IPC_API(Checkpoint_Set, uintptr_t player, float x, float y, float z, float radius)
