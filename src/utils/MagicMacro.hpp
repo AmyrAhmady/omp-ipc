@@ -1,6 +1,7 @@
 #pragma once
 #include <nlohmann/json.hpp>
 
+using StringRef = std::string&;
 using ConstStringRef = const std::string&;
 
 // splitter of given arg type of name

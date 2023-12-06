@@ -8,7 +8,6 @@ IPC_API(Actor_Create, int model, float x, float y, float z, float rot)
 		IActor* actor = component->create(model, { x, y ,z }, rot);
 		if (actor)
 		{
-			nlohmann::json ret;
 			auto id = actor->getID();
 			auto ptr = reinterpret_cast<uintptr_t>(actor);
 			IPC_RETURN(int id, uintptr_t ptr);
@@ -150,7 +149,6 @@ IPC_API(Actor_GetAnimation, uintptr_t ptr)
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	const AnimationData& anim = actor->getAnimation();
 
-	nlohmann::json ret;
 	auto library = anim.lib.data();
 	auto name = anim.name.data();
 	auto delta = anim.delta;
@@ -167,7 +165,6 @@ IPC_API(Actor_GetSpawnInfo, uintptr_t ptr)
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, ptr, actor);
 	const ActorSpawnData& spawnData = actor->getSpawnData();
 
-	nlohmann::json ret;
 	auto x = spawnData.position.x;
 	auto y = spawnData.position.y;
 	auto z = spawnData.position.z;
