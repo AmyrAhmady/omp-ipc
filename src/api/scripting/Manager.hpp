@@ -13,6 +13,8 @@
 #include "Server/Components/Classes/classes.hpp"
 #include "Server/Components/Console/console.hpp"
 #include "Server/Components/Timers/timers.hpp"
+#include "Server/Components/CustomModels/custommodels.hpp"
+#include "Server/Components/Dialogs/dialogs.hpp"
 
 #define STRINGIFY2(X) #X
 #define STRINGIFY(X) STRINGIFY2(X)
@@ -52,6 +54,7 @@ public:
 	IClassesComponent* classes = nullptr;
 	IConsoleComponent* console = nullptr;
 	ITimersComponent* timers = nullptr;
+	ICustomModelsComponent* models = nullptr;
 
 private:
 	IComponentList* componentList = nullptr;
