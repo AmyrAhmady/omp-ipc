@@ -267,7 +267,6 @@ private:																															\
 #define RETURN_ERROR(x) returnError(x)
 #define UNDEFINED_FAILED_RETURN(x) RETURN_ERROR("undefined error")
 #define FUNCTION_FAIL_RETURN RETURN_ERROR(this->name_ + ": error while executing.")
-#define NO_DATA_SUCCESS_RETURN RETURN_VALUE()
 
 template<typename T>
 inline nlohmann::json returnError(T value)
