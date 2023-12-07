@@ -20,7 +20,7 @@ IPC_API(Menu_Create, ConstStringRef title, uint32_t columns, float x, float y, f
 IPC_API(Menu_Destroy, uintptr_t ptr)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	OmpManager::Get()->menus->release(menu->GetID());
+	OmpManager::Get()->menus->release(menu->getID());
 	IPC_RETURN();
 }
 
@@ -42,7 +42,7 @@ IPC_API(Menu_ShowForPlayer, uintptr_t ptr, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	menu->showForPlayer(player_);
+	menu->showForPlayer(*player_);
 	IPC_RETURN();
 }
 
@@ -50,7 +50,7 @@ IPC_API(Menu_HideForPlayer, uintptr_t ptr, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	menu->hideForPlayer(player_);
+	menu->hideForPlayer(*player_);
 	IPC_RETURN();
 }
 
@@ -83,7 +83,9 @@ IPC_API(Player_GetMenu, uintptr_t player)
 IPC_API(Menu_IsValid, uintptr_t ptr)
 {
 	if (OmpManager::Get()->menus == nullptr)
-		return RETURN_ERROR("Pool for IMenu is unavailable.");
+	{
+		return FUNCTION_FAIL_RETURN;
+	}
 
 	IMenu* menu = reinterpret_cast<IMenu*>(ptr);
 	auto valid = menu != nullptr;
@@ -121,7 +123,7 @@ IPC_API(Menu_GetItems, uintptr_t ptr, int column)
 IPC_API(Menu_GetPos, uintptr_t ptr)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	const Vector2& pos = menu->getPosition();
+	auto pos = menu->getPosition();
 	auto x = pos.x;
 	auto y = pos.y;
 	IPC_RETURN(float x, float y);
@@ -130,7 +132,7 @@ IPC_API(Menu_GetPos, uintptr_t ptr)
 IPC_API(Menu_GetColumnWidth, uintptr_t ptr)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	const Vector2& widths = menu->getColumnWidths();
+	auto widths = menu->getColumnWidths();
 	auto column1Width = widths.x;
 	auto column2Width = widths.y;
 	IPC_RETURN(float column1Width, float column2Width);
@@ -139,13 +141,13 @@ IPC_API(Menu_GetColumnWidth, uintptr_t ptr)
 IPC_API(Menu_GetColumnHeader, uintptr_t ptr, int column)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	ConstStringRef header = menu->getColumnHeader(column);
+	ConstStringRef header = menu->getColumnHeader(column).data();
 	IPC_RETURN(ConstStringRef header);
 }
 
 IPC_API(Menu_GetItem, uintptr_t ptr, int column, int row)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	ConstStringRef cell = menu->getCell(column, row);
+	ConstStringRef cell = menu->getCell(column, row).data();
 	IPC_RETURN(ConstStringRef cell);
 }

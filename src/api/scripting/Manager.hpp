@@ -15,6 +15,7 @@
 #include "Server/Components/Timers/timers.hpp"
 #include "Server/Components/CustomModels/custommodels.hpp"
 #include "Server/Components/Dialogs/dialogs.hpp"
+#include "Server/Components/Menus/menus.hpp"
 
 #define STRINGIFY2(X) #X
 #define STRINGIFY(X) STRINGIFY2(X)
@@ -55,6 +56,7 @@ public:
 	IConsoleComponent* console = nullptr;
 	ITimersComponent* timers = nullptr;
 	ICustomModelsComponent* models = nullptr;
+	IMenusComponent* menus = nullptr;
 
 private:
 	IComponentList* componentList = nullptr;

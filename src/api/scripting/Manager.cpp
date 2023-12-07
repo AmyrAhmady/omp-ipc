@@ -41,6 +41,7 @@ void OmpManager::Init(ICore* c, IComponentList* clist)
 	console = GetComponent<IConsoleComponent>();
 	timers = GetComponent<ITimersComponent>();
 	models = GetComponent<ICustomModelsComponent>();
+	menus = GetComponent<IMenusComponent>();
 }
 
 void OmpManager::AddEvents()
