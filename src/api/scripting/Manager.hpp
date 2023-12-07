@@ -89,3 +89,7 @@ inline PlayerDataType* GetPlayerData(IPlayer* player)
 	if (entity_output == nullptr) \
 		return RETURN_ERROR("Invalid " STRINGIFY(#entity_type) " entity pointer.");
 
+#define GET_PLAYER_DATA_CHECKED(player, entity_type, entity_output) \
+	auto entity_output = GetPlayerData<entity_type>(player); \
+	if (entity_output == nullptr) \
+		return RETURN_ERROR("Data for " STRINGIFY(#entity_type) " is unavailable."); \
