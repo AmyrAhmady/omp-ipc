@@ -80,3 +80,12 @@ inline PlayerDataType* GetPlayerData(IPlayer* player)
 	entity_type* entity_output = reinterpret_cast<entity_type*>(uintptr_t(entity_mem_addr)); \
 	if(entity_output == nullptr) \
 		return RETURN_ERROR("Invalid " STRINGIFY(#entity_type) " entity pointer.");
+
+#define GET_PLAYER_POOL_ENTITY_CHECKED(player, entity_type, entity_mem_addr, entity_output) \
+	auto pool_instance = GetPlayerData<entity_type>(player); \
+	if (pool_instance == nullptr) \
+		return RETURN_ERROR("Pool for " STRINGIFY(#entity_type) " is unavailable."); \
+	entity_type* entity_output = reinterpret_cast<entity_type*>(uintptr_t(entity_mem_addr)); \
+	if (entity_output == nullptr) \
+		return RETURN_ERROR("Invalid " STRINGIFY(#entity_type) " entity pointer.");
+
