@@ -18,6 +18,8 @@
 #include "Server/Components/Menus/menus.hpp"
 #include "Server/Components/TextDraws/textdraws.hpp"
 #include "Server/Components/Recordings/recordings.hpp"
+#include "Server/Components/TextDraws/textdraws.hpp"
+#include "Server/Components/TextLabels/textlabels.hpp"
 
 #define STRINGIFY2(X) #X
 #define STRINGIFY(X) STRINGIFY2(X)
@@ -59,6 +61,8 @@ public:
 	ITimersComponent* timers = nullptr;
 	ICustomModelsComponent* models = nullptr;
 	IMenusComponent* menus = nullptr;
+	ITextDrawsComponent* textdraws = nullptr;
+	ITextLabelsComponent* textlabels = nullptr;
 
 private:
 	IComponentList* componentList = nullptr;
