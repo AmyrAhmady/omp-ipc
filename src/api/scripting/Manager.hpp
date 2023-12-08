@@ -17,6 +17,7 @@
 #include "Server/Components/Dialogs/dialogs.hpp"
 #include "Server/Components/Menus/menus.hpp"
 #include "Server/Components/TextDraws/textdraws.hpp"
+#include "Server/Components/Recordings/recordings.hpp"
 
 #define STRINGIFY2(X) #X
 #define STRINGIFY(X) STRINGIFY2(X)

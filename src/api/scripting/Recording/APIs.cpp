@@ -1,4 +1,3 @@
-#include "../../../message/Handler.hpp"
 #include "../Manager.hpp"
 
 IPC_API(Recording_Start, uintptr_t player, int type, ConstStringRef file)
@@ -8,7 +7,6 @@ IPC_API(Recording_Start, uintptr_t player, int type, ConstStringRef file)
 	if (recording)
 	{
 		recording->start(PlayerRecordingType(type), file);
-		IPC_RETURN();
 	}
 	IPC_RETURN();
 }
@@ -20,7 +18,6 @@ IPC_API(Recording_Stop, uintptr_t player)
 	if (recording)
 	{
 		recording->stop();
-		IPC_RETURN();
 	}
 	IPC_RETURN();
 }
