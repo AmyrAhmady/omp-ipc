@@ -2,15 +2,15 @@
 #include "../Manager.hpp"
 
 #define GET_VAR_COMP(comp)                           	\
-	IVariablesComponent* comp = OmpManager::Get()->vars; \
+	IVariablesComponent* comp = OmpManager::Get()->variables; \
 	if (comp == nullptr)                                  \
-		IPC_RETURN();
+		return FUNCTION_FAIL_RETURN;
 
 #define GET_PLAYER_VAR_COMP(comp)                                       		\
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_); \
 	IPlayerVariableData* comp = queryExtension<IPlayerVariableData>(player_); 		\
 	if (comp == nullptr)                                                     		\
-		IPC_RETURN();
+		return FUNCTION_FAIL_RETURN;
 
 IPC_API(SVar_SetInt, ConstStringRef varname, int value)
 {
@@ -52,8 +52,8 @@ IPC_API(SVar_GetString, ConstStringRef varname)
 	{
 		IPC_RETURN();
 	}
-	ConstStringRef output = var;
-	int len = std::get<StringView>(output).length();
+	ConstStringRef output = var.data();
+	int len = output.length();
 	IPC_RETURN(ConstStringRef output, int len);
 }
 
@@ -95,12 +95,12 @@ IPC_API(SVar_GetNameAtIndex, int index)
 	GET_VAR_COMP(component);
 	StringView varname;
 	bool res = component->getKeyAtIndex(index, varname);
-	ConstStringRef output;
+	StringRef output = Impl::String();
 	if (res)
 	{
-		output = varname;
+		output = varname.data();
 	}
-	IPC_RETURN(ConstStringRef output, bool res);
+	IPC_RETURN(StringRef output, bool res);
 }
 
 IPC_API(SVar_GetType, ConstStringRef varname)
@@ -144,8 +144,8 @@ IPC_API(PVar_GetString, uintptr_t player, ConstStringRef varname)
 	{
 		IPC_RETURN();
 	}
-	ConstStringRef output = var;
-	int len = std::get<StringView>(output).length();
+	ConstStringRef output = var.data();
+	int len = output.length();
 	IPC_RETURN(ConstStringRef output, int len);
 }
 
@@ -182,12 +182,12 @@ IPC_API(PVar_GetNameAtIndex, uintptr_t player, int index)
 	GET_PLAYER_VAR_COMP(component);
 	StringView varname;
 	bool res = component->getKeyAtIndex(index, varname);
-	ConstStringRef output;
+	StringRef output = Impl::String();
 	if (res)
 	{
-		output = varname;
+		output = varname.data();
 	}
-	IPC_RETURN(ConstStringRef output, bool res);
+	IPC_RETURN(StringRef output, bool res);
 }
 
 IPC_API(PVar_GetType, uintptr_t player, ConstStringRef varname)

@@ -24,6 +24,7 @@ using ConstStringRef = const std::string&;
 #define SPLIT_double LPAREN double COMMA
 #define SPLIT_uintptr_t LPAREN uintptr_t COMMA
 #define SPLIT_ConstStringRef LPAREN ConstStringRef COMMA
+#define SPLIT_StringRef LPAREN StringRef COMMA
 
 #define DECLARE_VARIABLE_NATIVELY_(x, y) x y = params[#y]
 #define DECLARE_VARIABLE_NATIVELY(A) SPLIT(DECLARE_VARIABLE_NATIVELY_, A)

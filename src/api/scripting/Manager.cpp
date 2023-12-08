@@ -43,6 +43,7 @@ void OmpManager::Init(ICore* c, IComponentList* clist)
 	models = GetComponent<ICustomModelsComponent>();
 	menus = GetComponent<IMenusComponent>();
 	textdraws = GetComponent<ITextDrawsComponent>();
+	variables = GetComponent<IVariablesComponent>();
 }
 
 void OmpManager::AddEvents()
