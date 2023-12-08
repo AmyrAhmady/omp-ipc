@@ -62,7 +62,6 @@ public:
 	ICustomModelsComponent* models = nullptr;
 	IMenusComponent* menus = nullptr;
 	ITextDrawsComponent* textdraws = nullptr;
-	ITextLabelsComponent* textlabels = nullptr;
 
 private:
 	IComponentList* componentList = nullptr;
