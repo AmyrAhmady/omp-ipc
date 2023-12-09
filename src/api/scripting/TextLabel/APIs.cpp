@@ -161,7 +161,7 @@ IPC_API(PlayerTextLabel3D_Create, uintptr_t player, ConstStringRef text, uint32_
 		}
 		else if (attachedVehicle)
 		{
-			GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, attachedVehicle, attachedVehicle_);
+			GET_POOL_ENTITY_CHECKED(OmpManager::Get()->vehicles, IVehicle, attachedVehicle, attachedVehicle_);
 			textlabel = labelData->create(text, Colour::FromRGBA(colour), { x, y, z }, drawDistance, los, *attachedVehicle_);
 		}
 		else
