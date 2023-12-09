@@ -303,8 +303,8 @@ IPC_API(ConsoleVar_GetAsFloat, ConstStringRef cvar)
 
 IPC_API(ConsoleVar_GetAsString, ConstStringRef cvar)
 {
-	StringRef value = Impl::String();
-	int len = getConfigOptionAsString(cvar, value);
+	String value = Impl::String();
+	getConfigOptionAsString(cvar, value);
 	IPC_RETURN(ConstStringRef value);
 }
 
@@ -402,8 +402,8 @@ IPC_API(ServerVar_GetAsFloat, ConstStringRef cvar)
 
 IPC_API(ServerVar_GetAsString, ConstStringRef cvar)
 {
-	StringRef value = Impl::String();
-	int len = getConfigOptionAsString(cvar, value);
+	String value = Impl::String();
+	getConfigOptionAsString(cvar, value);
 	IPC_RETURN(ConstStringRef value);
 }
 
