@@ -560,7 +560,8 @@ IPC_API(PlayerObject_Move, uintptr_t player, uintptr_t object, float x, float y,
 	object_->move(data);
 
 	float estimatedTime = (glm::length(data.targetPos - object_->getPosition()) / speed) * 1000.0f;
-	return static_cast<int>(estimatedTime);
+	int time = static_cast<int>(estimatedTime);
+	IPC_RETURN(int time);
 }
 
 IPC_API(PlayerObject_Stop, uintptr_t player, uintptr_t object)
