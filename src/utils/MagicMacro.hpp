@@ -1,6 +1,7 @@
 #pragma once
 #include <nlohmann/json.hpp>
 
+using String = std::string;
 using StringRef = std::string&;
 using ConstStringRef = const std::string&;
 
