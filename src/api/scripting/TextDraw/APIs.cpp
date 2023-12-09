@@ -382,15 +382,12 @@ IPC_API(PlayerTextDraw_Destroy, uintptr_t player, uintptr_t textdraw)
 IPC_API(PlayerTextDraw_IsValid, uintptr_t player, uintptr_t textdraw)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	IPlayerTextDrawData* playerTextDraws = queryExtension<IPlayerTextDrawData>(player_);
-	bool valid = false;
-	if (playerTextDraws)
-	{
-		IPlayerTextDraw* textdraw_ = reinterpret_cast<IPlayerTextDraw*>(textdraw);
-		if (textdraw_ != nullptr) {
-			valid = true;
-		}
-	}
+	auto pool_instance = GetPlayerData<IPlayerTextDrawData>(player_);
+	if (pool_instance == nullptr)
+		return RETURN_ERROR("Pool for IPlayerTextDraw is unavailable.");
+
+	IPlayerTextDraw* textdraw_ = reinterpret_cast<IPlayerTextDraw*>(textdraw);
+	auto valid = textdraw_ != nullptr;
 	IPC_RETURN(bool valid);
 }
 
