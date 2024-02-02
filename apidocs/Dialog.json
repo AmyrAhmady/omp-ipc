@@ -1,0 +1,55 @@
+{
+  "functions": [
+    {
+      "name": "Dialog_Show",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "dialog",
+          "type": "int"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "button1",
+          "type": "string"
+        },
+        {
+          "name": "button2",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetDialog",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetDialogData",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "functions": [
+    {
+      "name": "Menu_Create",
+      "params": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "columns",
+          "type": "uint32"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "column1Width",
+          "type": "float"
+        },
+        {
+          "name": "column2Width",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Menu_Destroy",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_AddItem",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "column",
+          "type": "uint8"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Menu_SetColumnHeader",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "column",
+          "type": "uint8"
+        },
+        {
+          "name": "headerTitle",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Menu_ShowForPlayer",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_HideForPlayer",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_Disable",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_DisableRow",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "row",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetMenu",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_IsValid",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_IsDisabled",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_IsRowDisabled",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "row",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Menu_GetColumns",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_GetItems",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "column",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Menu_GetPos",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_GetColumnWidth",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Menu_GetColumnHeader",
+      "params": [
+        {
+          "name": "menu",
+          "type": "pointer"
+        },
+        {
+          "name": "column",
+          "type": "int"
+        }
+      ]
+    }
+  ]
+}

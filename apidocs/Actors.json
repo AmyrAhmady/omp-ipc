@@ -1,0 +1,259 @@
+{
+  "functions": [
+    {
+      "name": "Actor_Create",
+      "params": [
+        {
+          "name": "model",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "rot",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Actor_Destroy",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_IsStreamedInFor",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_SetVirtualWorld",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "vw",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Actor_GetVirtualWorld",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_ApplyAnimation",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "library",
+          "type": "string"
+        },
+        {
+          "name": "delta",
+          "type": "float"
+        },
+        {
+          "name": "loop",
+          "type": "bool"
+        },
+        {
+          "name": "lockX",
+          "type": "bool"
+        },
+        {
+          "name": "lockY",
+          "type": "bool"
+        },
+        {
+          "name": "freeze",
+          "type": "bool"
+        },
+        {
+          "name": "time",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Actor_ClearAnimations",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_SetPos",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Actor_GetPos",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_SetFacingAngle",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "angle",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Actor_GetFacingAngle",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_SetHealth",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "hp",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Actor_GetHealth",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_SetInvulnerable",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "toggle",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Actor_IsInvulnerable",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_IsValid",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_SetSkin",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        },
+        {
+          "name": "skin",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Actor_GetSkin",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Actor_GetAnimation",
+      "params": [
+        {
+          "name": "actor",
+          "type": "pointer"
+        }
+      ]
+    }
+  ]
+}

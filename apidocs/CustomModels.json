@@ -1,0 +1,123 @@
+{
+  "functions": [
+    {
+      "name": "CustomModel_AddCharModel",
+      "params": [
+        {
+          "name": "baseid",
+          "type": "int"
+        },
+        {
+          "name": "newid",
+          "type": "int"
+        },
+        {
+          "name": "dff",
+          "type": "string"
+        },
+        {
+          "name": "textureLibrary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CustomModel_AddSimpleModel",
+      "params": [
+        {
+          "name": "virtualWorld",
+          "type": "int"
+        },
+        {
+          "name": "baseid",
+          "type": "int"
+        },
+        {
+          "name": "newid",
+          "type": "int"
+        },
+        {
+          "name": "dff",
+          "type": "string"
+        },
+        {
+          "name": "textureLibrary",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CustomModel_AddSimpleModelTimed",
+      "params": [
+        {
+          "name": "virtualWorld",
+          "type": "int"
+        },
+        {
+          "name": "baseid",
+          "type": "int"
+        },
+        {
+          "name": "newid",
+          "type": "int"
+        },
+        {
+          "name": "dff",
+          "type": "string"
+        },
+        {
+          "name": "textureLibrary",
+          "type": "string"
+        },
+        {
+          "name": "timeOn",
+          "type": "int"
+        },
+        {
+          "name": "timeOff",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCustomSkin",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "CustomModel_RedirectDownload",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "CustomModel_FindModelFileNameFromCRC",
+      "params": [
+        {
+          "name": "crc",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "CustomModel_IsValid",
+      "params": [
+        {
+          "name": "modelId",
+          "type": "int"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2263 @@
+{
+  "functions": [
+    {
+      "name": "Player_SendMessage",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "color",
+          "type": "uint32"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "All_SendMessage",
+      "params": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetCameraPos",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetDrunkLevel",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "level",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetInterior",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "interior",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetWantedLevel",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "level",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetWeather",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "weather",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetWeather",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetSkin",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "skin",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetShopName",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_GiveMoney",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "amount",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetCameraLookAt",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "cutType",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetCameraBehind",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_CreateExplosion",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "type",
+          "type": "int"
+        },
+        {
+          "name": "radius",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "All_CreateExplosion",
+      "params": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "type",
+          "type": "int"
+        },
+        {
+          "name": "radius",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_PlayAudioStream",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "url",
+          "type": "string"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "distance",
+          "type": "float"
+        },
+        {
+          "name": "usePos",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_StopAudioStream",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "All_SendDeathMessage",
+      "params": [
+        {
+          "name": "killer",
+          "type": "pointer"
+        },
+        {
+          "name": "killee",
+          "type": "pointer"
+        },
+        {
+          "name": "weapon",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_ToggleWidescreen",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsWidescreenToggled",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetHealth",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "health",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetHealth",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetArmor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "armor",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetArmor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetTeam",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "team",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetTeam",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetScore",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "score",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetScore",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSkin",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetColor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "color",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetColor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetDefaultColor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetDrunkLevel",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GiveWeapon",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "weapon",
+          "type": "int"
+        },
+        {
+          "name": "ammo",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_RemoveWeapon",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "weapon",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetMoney",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_ResetMoney",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetName",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetName",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetState",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetPing",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetWeapon",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetTime",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "hour",
+          "type": "int"
+        },
+        {
+          "name": "minute",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetTime",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_ToggleClock",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_HasClock",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_ForceClassSelection",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetWantedLevel",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetFightingStyle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetFightingStyle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetVelocity",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetVelocity",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraPos",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetDistanceFromPoint",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetInterior",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetPos",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetPos",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetVirtualWorld",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsNPC",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsStreamedIn",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "other",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_PlaySound",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "sound",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_SpectatePlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "target",
+          "type": "pointer"
+        },
+        {
+          "name": "mode",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SpectateVehicle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "target",
+          "type": "pointer"
+        },
+        {
+          "name": "mode",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetVirtualWorld",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "vw",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetWorldBounds",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "xMax",
+          "type": "float"
+        },
+        {
+          "name": "xMin",
+          "type": "float"
+        },
+        {
+          "name": "yMax",
+          "type": "float"
+        },
+        {
+          "name": "yMin",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_ClearWorldBounds",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetWorldBounds",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "ClearAnimations",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "syncType",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetLastShotVectors",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraTargetPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraTargetActor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraTargetObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraTargetVehicle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_PutInVehicle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "vehicle",
+          "type": "pointer"
+        },
+        {
+          "name": "seat",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_RemoveBuilding",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "model",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "radius",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetBuildingsRemoved",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_RemoveFromVehicle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_RemoveMapIcon",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "icon",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetMapIcon",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "iconID",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "type",
+          "type": "int"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_ResetWeapons",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetAmmo",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "id",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetArmedWeapon",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "weapon",
+          "type": "uint8"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetChatBubble",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "drawdistance",
+          "type": "float"
+        },
+        {
+          "name": "expiretime",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetPosFindZ",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetSkillLevel",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "weapon",
+          "type": "uint8"
+        },
+        {
+          "name": "level",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetSpecialAction",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "action",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Player_ShowNameTagForPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "other",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_ToggleControllable",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_ToggleSpectating",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_ApplyAnimation",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "animlib",
+          "type": "string"
+        },
+        {
+          "name": "animname",
+          "type": "string"
+        },
+        {
+          "name": "delta",
+          "type": "float"
+        },
+        {
+          "name": "loop",
+          "type": "bool"
+        },
+        {
+          "name": "lockX",
+          "type": "bool"
+        },
+        {
+          "name": "lockY",
+          "type": "bool"
+        },
+        {
+          "name": "freeze",
+          "type": "bool"
+        },
+        {
+          "name": "time",
+          "type": "uint32"
+        },
+        {
+          "name": "sync",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetAnimationName",
+      "params": [
+        {
+          "name": "index",
+          "type": "int"
+        },
+        {
+          "name": "lib",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_EditAttachedObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_EnableCameraTarget",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_EnableStuntBonus",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "All_EnableStuntBonus",
+      "params": [
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetPlayerAmmo",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetAnimationIndex",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetFacingAngle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetIp",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSpecialAction",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetVehicleID",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetVehicleSeat",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetWeaponData",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "slot",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetWeaponState",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_InterpolateCameraPos",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "from_x",
+          "type": "float"
+        },
+        {
+          "name": "from_y",
+          "type": "float"
+        },
+        {
+          "name": "from_z",
+          "type": "float"
+        },
+        {
+          "name": "to_x",
+          "type": "float"
+        },
+        {
+          "name": "to_y",
+          "type": "float"
+        },
+        {
+          "name": "to_z",
+          "type": "float"
+        },
+        {
+          "name": "time",
+          "type": "int"
+        },
+        {
+          "name": "cut",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_InterpolateCameraLookAt",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "from_x",
+          "type": "float"
+        },
+        {
+          "name": "from_y",
+          "type": "float"
+        },
+        {
+          "name": "from_z",
+          "type": "float"
+        },
+        {
+          "name": "to_x",
+          "type": "float"
+        },
+        {
+          "name": "to_y",
+          "type": "float"
+        },
+        {
+          "name": "to_z",
+          "type": "float"
+        },
+        {
+          "name": "time",
+          "type": "int"
+        },
+        {
+          "name": "cut",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsPlayerAttachedObjectSlotUsed",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_AttachCameraToObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "object",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_AttachCameraToPlayerObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "object",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraAspectRatio",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraFrontVector",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraMode",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetKeys",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSurfingVehicleID",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSurfingObjectID",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetTargetPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetTargetActor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsInVehicle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "targetVehicle",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsInAnyVehicle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsInRangeOfPoint",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "range",
+          "type": "float"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_PlayCrimeReport",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "suspect",
+          "type": "pointer"
+        },
+        {
+          "name": "crime",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_RemoveAttachedObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetAttachedObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        },
+        {
+          "name": "modelid",
+          "type": "int"
+        },
+        {
+          "name": "bone",
+          "type": "int"
+        },
+        {
+          "name": "offsetX",
+          "type": "float"
+        },
+        {
+          "name": "offsetY",
+          "type": "float"
+        },
+        {
+          "name": "offsetZ",
+          "type": "float"
+        },
+        {
+          "name": "rotationX",
+          "type": "float"
+        },
+        {
+          "name": "rotationY",
+          "type": "float"
+        },
+        {
+          "name": "rotationZ",
+          "type": "float"
+        },
+        {
+          "name": "scaleX",
+          "type": "float"
+        },
+        {
+          "name": "scaleY",
+          "type": "float"
+        },
+        {
+          "name": "scaleZ",
+          "type": "float"
+        },
+        {
+          "name": "materialcolor1",
+          "type": "uint32"
+        },
+        {
+          "name": "materialcolor2",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetAttachedObject",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetFacingAngle",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "angle",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetMarkerForPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "other",
+          "type": "pointer"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetMarkerForPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "other",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_AllowTeleport",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "allow",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsTeleportAllowed",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_DisableRemoteVehicleCollisions",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "disable",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetCameraZoom",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SelectTextDraw",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "hoverColour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Player_CancelSelectTextDraw",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SendClientCheck",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "actionType",
+          "type": "int"
+        },
+        {
+          "name": "address",
+          "type": "int"
+        },
+        {
+          "name": "offset",
+          "type": "int"
+        },
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_Spawn",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GPCI",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsAdmin",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_Kick",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_ShowGameText",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "time",
+          "type": "int"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_HideGameText",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_HasGameText",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetGameText",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_Ban",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_BanEx",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "reason",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_SendDeathMessage",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "killer",
+          "type": "pointer"
+        },
+        {
+          "name": "killee",
+          "type": "pointer"
+        },
+        {
+          "name": "weapon",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_SendMessageToPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "sender",
+          "type": "pointer"
+        },
+        {
+          "name": "message",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetVersion",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSkillLevel",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "skill",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetZAim",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSurfingOffsets",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetRotationQuat",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetPlayerSpectateID",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetSpectateType",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetRawIp",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetGravity",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "gravity",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetGravity",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetAdmin",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "set",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsSpawned",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsControllable",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsCameraTargetEnabled",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_ToggleGhostMode",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "toggle",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetGhostMode",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_AllowWeapons",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "allow",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Player_AreWeaponsAllowed",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsPlayerUsingOfficialClient",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetAnimationFlags",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_IsInDriveByMode",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ]
+    }
+  ]
+}
