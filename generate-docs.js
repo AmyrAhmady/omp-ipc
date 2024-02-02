@@ -12,11 +12,13 @@ const getLineBreakType = (content) => {
   if (content[indexOfLF - 1] === "\r") return "\r\n";
 };
 
-const getParamTypeForDocs = (type) => {
+const getDataTypeForDocs = (type) => {
   switch (type) {
     case "int":
       return "int";
     case "ConstStringRef":
+      return "string";
+    case "StringRef":
       return "string";
     case "bool":
       return "bool";
@@ -60,15 +62,38 @@ files.forEach((file) => {
       if (m.length === 3) {
         const apiDefParams = m[1].split(", ");
         const funcName = apiDefParams[0];
+
         apiDefParams.shift();
         const params = apiDefParams.map((paramWithType) => {
           const p = paramWithType.split(" ");
-          return { name: p[1], type: getParamTypeForDocs(p[0]) };
+          return { name: p[1], type: getDataTypeForDocs(p[0]) };
         });
+
+        let returnValues = [];
+
+        const regex = /IPC_RETURN\((.*?)\);/gm;
+
+        let n;
+        while ((n = regex.exec(m[0])) !== null) {
+          if (n.index === regex.lastIndex) {
+            regex.lastIndex++;
+          }
+
+          if (n.length == 2) {
+            const returns = n[1].split(", ");
+            if (returns[0] !== "") {
+              returnValues = returns.map((returnWithType) => {
+                const p = returnWithType.split(" ");
+                return { name: p[1], type: getDataTypeForDocs(p[0]) };
+              });
+            }
+          }
+        }
 
         api.functions.push({
           name: funcName,
           params: params,
+          return: returnValues,
         });
       }
     }

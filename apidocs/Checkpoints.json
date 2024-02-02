@@ -23,7 +23,8 @@
           "name": "radius",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Checkpoint_Disable",
@@ -32,7 +33,8 @@
           "name": "player",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Checkpoint_IsPlayerIn",
@@ -40,6 +42,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "isIn",
+          "type": "bool"
         }
       ]
     },
@@ -50,6 +58,12 @@
           "name": "player",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "active",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -58,6 +72,24 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "radius",
+          "type": "float"
         }
       ]
     },
@@ -100,7 +132,8 @@
           "name": "radius",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "RaceCheckpoint_Disable",
@@ -109,7 +142,8 @@
           "name": "player",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "RaceCheckpoint_IsPlayerIn",
@@ -117,6 +151,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "isIn",
+          "type": "bool"
         }
       ]
     },
@@ -126,6 +166,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "active",
+          "type": "bool"
         }
       ]
     }

@@ -23,6 +23,16 @@
           "name": "rot",
           "type": "float"
         }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
       ]
     },
     {
@@ -32,7 +42,8 @@
           "name": "actor",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_IsStreamedInFor",
@@ -44,6 +55,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "streamed",
+          "type": "bool"
         }
       ]
     },
@@ -58,7 +75,8 @@
           "name": "vw",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_GetVirtualWorld",
@@ -66,6 +84,12 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "vw",
+          "type": "int"
         }
       ]
     },
@@ -108,7 +132,8 @@
           "name": "time",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_ClearAnimations",
@@ -117,7 +142,8 @@
           "name": "actor",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_SetPos",
@@ -138,7 +164,8 @@
           "name": "z",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_GetPos",
@@ -146,6 +173,20 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
         }
       ]
     },
@@ -160,7 +201,8 @@
           "name": "angle",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_GetFacingAngle",
@@ -168,6 +210,12 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "angle",
+          "type": "float"
         }
       ]
     },
@@ -182,7 +230,8 @@
           "name": "hp",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_GetHealth",
@@ -190,6 +239,12 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "hp",
+          "type": "float"
         }
       ]
     },
@@ -204,7 +259,8 @@
           "name": "toggle",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_IsInvulnerable",
@@ -212,6 +268,12 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "toggle",
+          "type": "bool"
         }
       ]
     },
@@ -221,6 +283,12 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     },
@@ -235,7 +303,8 @@
           "name": "skin",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Actor_GetSkin",
@@ -243,6 +312,12 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "skin",
+          "type": "bool"
         }
       ]
     },
@@ -252,6 +327,40 @@
         {
           "name": "actor",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "library",
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "delta",
+          "type": "float"
+        },
+        {
+          "name": "loop",
+          "type": "bool"
+        },
+        {
+          "name": "lockX",
+          "type": "bool"
+        },
+        {
+          "name": "lockY",
+          "type": "bool"
+        },
+        {
+          "name": "freeze",
+          "type": "bool"
+        },
+        {
+          "name": "time",
+          "type": "int"
         }
       ]
     }

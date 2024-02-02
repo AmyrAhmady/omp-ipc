@@ -11,7 +11,8 @@
           "name": "value",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "SVar_GetInt",
@@ -19,6 +20,12 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
         }
       ]
     },
@@ -33,7 +40,8 @@
           "name": "value",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "SVar_GetString",
@@ -41,6 +49,16 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "len",
+          "type": "int"
         }
       ]
     },
@@ -55,7 +73,8 @@
           "name": "value",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "SVar_GetFloat",
@@ -63,6 +82,12 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
         }
       ]
     },
@@ -73,11 +98,23 @@
           "name": "varname",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
       ]
     },
     {
       "name": "SVar_GetUpperIndex",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ]
     },
     {
       "name": "SVar_GetNameAtIndex",
@@ -85,6 +122,16 @@
         {
           "name": "index",
           "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "res",
+          "type": "bool"
         }
       ]
     },
@@ -94,6 +141,12 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "type",
+          "type": "int"
         }
       ]
     },
@@ -112,7 +165,8 @@
           "name": "value",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PVar_GetInt",
@@ -124,6 +178,12 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
         }
       ]
     },
@@ -142,7 +202,8 @@
           "name": "value",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PVar_GetString",
@@ -154,6 +215,16 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "len",
+          "type": "int"
         }
       ]
     },
@@ -172,7 +243,8 @@
           "name": "value",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PVar_GetFloat",
@@ -184,6 +256,12 @@
         {
           "name": "varname",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
         }
       ]
     },
@@ -198,6 +276,12 @@
           "name": "varname",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -206,6 +290,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
         }
       ]
     },
@@ -219,6 +309,16 @@
         {
           "name": "index",
           "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "res",
+          "type": "bool"
         }
       ]
     }

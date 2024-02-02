@@ -27,6 +27,16 @@
           "name": "column2Width",
           "type": "float"
         }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
       ]
     },
     {
@@ -36,7 +46,8 @@
           "name": "menu",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Menu_AddItem",
@@ -52,6 +63,12 @@
         {
           "name": "text",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "index",
+          "type": "int"
         }
       ]
     },
@@ -70,7 +87,8 @@
           "name": "headerTitle",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Menu_ShowForPlayer",
@@ -83,7 +101,8 @@
           "name": "player",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Menu_HideForPlayer",
@@ -96,7 +115,8 @@
           "name": "player",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Menu_Disable",
@@ -105,7 +125,8 @@
           "name": "menu",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Menu_DisableRow",
@@ -118,7 +139,8 @@
           "name": "row",
           "type": "uint8"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Player_GetMenu",
@@ -126,6 +148,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
         }
       ]
     },
@@ -136,6 +164,12 @@
           "name": "menu",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -144,6 +178,12 @@
         {
           "name": "menu",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "disabled",
+          "type": "bool"
         }
       ]
     },
@@ -158,6 +198,12 @@
           "name": "row",
           "type": "int"
         }
+      ],
+      "return": [
+        {
+          "name": "disabled",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -166,6 +212,12 @@
         {
           "name": "menu",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "columns",
+          "type": "int"
         }
       ]
     },
@@ -180,6 +232,12 @@
           "name": "column",
           "type": "int"
         }
+      ],
+      "return": [
+        {
+          "name": "rows",
+          "type": "int"
+        }
       ]
     },
     {
@@ -189,6 +247,16 @@
           "name": "menu",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        }
       ]
     },
     {
@@ -197,6 +265,16 @@
         {
           "name": "menu",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "column1Width",
+          "type": "float"
+        },
+        {
+          "name": "column2Width",
+          "type": "float"
         }
       ]
     },
@@ -210,6 +288,12 @@
         {
           "name": "column",
           "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "header",
+          "type": "string"
         }
       ]
     }

@@ -19,6 +19,12 @@
           "name": "textureLibrary",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -43,6 +49,12 @@
         {
           "name": "textureLibrary",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
         }
       ]
     },
@@ -77,6 +89,12 @@
           "name": "timeOff",
           "type": "int"
         }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -85,6 +103,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "skin",
+          "type": "int"
         }
       ]
     },
@@ -99,13 +123,24 @@
           "name": "url",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "CustomModel_FindModelFileNameFromCRC",
       "params": [
         {
           "name": "crc",
+          "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "len",
           "type": "int"
         }
       ]
@@ -116,6 +151,12 @@
         {
           "name": "modelId",
           "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     }

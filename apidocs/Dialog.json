@@ -31,7 +31,8 @@
           "name": "button2",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Player_GetDialog",
@@ -39,6 +40,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "dialog",
+          "type": "int"
         }
       ]
     },
@@ -48,6 +55,32 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "dialogid",
+          "type": "int"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "type": "string"
+        },
+        {
+          "name": "button1",
+          "type": "string"
+        },
+        {
+          "name": "button2",
+          "type": "string"
         }
       ]
     }

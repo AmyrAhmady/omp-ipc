@@ -35,6 +35,16 @@
           "name": "los",
           "type": "bool"
         }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
       ]
     },
     {
@@ -44,7 +54,8 @@
           "name": "textlabel",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_AttachToPlayer",
@@ -69,7 +80,8 @@
           "name": "offsetZ",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_AttachToVehicle",
@@ -94,7 +106,8 @@
           "name": "offsetZ",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_UpdateText",
@@ -111,7 +124,8 @@
           "name": "text",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_IsValid",
@@ -119,6 +133,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     },
@@ -133,6 +153,12 @@
           "name": "textlabel",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "streamed",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -141,6 +167,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
         }
       ]
     },
@@ -151,6 +183,12 @@
           "name": "textlabel",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
       ]
     },
     {
@@ -159,6 +197,20 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
         }
       ]
     },
@@ -173,7 +225,8 @@
           "name": "distance",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_GetDrawDistance",
@@ -181,6 +234,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "distance",
+          "type": "float"
         }
       ]
     },
@@ -190,6 +249,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "los",
+          "type": "bool"
         }
       ]
     },
@@ -204,7 +269,8 @@
           "name": "status",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_GetVirtualWorld",
@@ -212,6 +278,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "virtualWorld",
+          "type": "int"
         }
       ]
     },
@@ -226,7 +298,8 @@
           "name": "world",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextLabel3D_GetAttachedData",
@@ -234,6 +307,16 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "attached_player",
+          "type": "int"
+        },
+        {
+          "name": "attached_vehicle",
+          "type": "int"
         }
       ]
     },
@@ -280,6 +363,16 @@
           "name": "los",
           "type": "bool"
         }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
       ]
     },
     {
@@ -293,7 +386,8 @@
           "name": "textlabel",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PlayerTextLabel3D_UpdateText",
@@ -314,7 +408,8 @@
           "name": "text",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PlayerTextLabel3D_IsValid",
@@ -326,6 +421,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     },
@@ -340,6 +441,12 @@
           "name": "textlabel",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
       ]
     },
     {
@@ -353,6 +460,12 @@
           "name": "textlabel",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
       ]
     },
     {
@@ -365,6 +478,20 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
         }
       ]
     },
@@ -383,7 +510,8 @@
           "name": "distance",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PlayerTextLabel3D_GetDrawDistance",
@@ -395,6 +523,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "distance",
+          "type": "float"
         }
       ]
     },
@@ -408,6 +542,12 @@
         {
           "name": "textlabel",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "los",
+          "type": "bool"
         }
       ]
     },
@@ -426,7 +566,8 @@
           "name": "status",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "PlayerTextLabel3D_GetVirtualWorld",
@@ -439,7 +580,8 @@
           "name": "textlabel",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     }
   ]
 }

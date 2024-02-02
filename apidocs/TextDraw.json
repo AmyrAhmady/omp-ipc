@@ -15,6 +15,16 @@
           "name": "text",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
       ]
     },
     {
@@ -24,7 +34,8 @@
           "name": "textdraw",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_IsValid",
@@ -32,6 +43,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     },
@@ -45,6 +62,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "shown",
+          "type": "bool"
         }
       ]
     },
@@ -63,7 +86,8 @@
           "name": "sizeY",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetTextSize",
@@ -80,7 +104,8 @@
           "name": "sizeY",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetAlignment",
@@ -93,7 +118,8 @@
           "name": "alignment",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetColor",
@@ -106,7 +132,8 @@
           "name": "colour",
           "type": "uint32"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetUseBox",
@@ -119,7 +146,8 @@
           "name": "use",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetBoxColor",
@@ -132,7 +160,8 @@
           "name": "colour",
           "type": "uint32"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetShadow",
@@ -145,7 +174,8 @@
           "name": "size",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetOutline",
@@ -158,7 +188,8 @@
           "name": "size",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetBackgroundColor",
@@ -171,7 +202,8 @@
           "name": "colour",
           "type": "uint32"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetFont",
@@ -184,7 +216,8 @@
           "name": "font",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetSetProportional",
@@ -197,7 +230,8 @@
           "name": "set",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetSelectable",
@@ -210,7 +244,8 @@
           "name": "set",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_ShowForPlayer",
@@ -223,7 +258,8 @@
           "name": "textdraw",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_HideForPlayer",
@@ -236,7 +272,8 @@
           "name": "textdraw",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_ShowForAll",
@@ -245,7 +282,8 @@
           "name": "textdraw",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_HideForAll",
@@ -254,7 +292,8 @@
           "name": "textdraw",
           "type": "pointer"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetString",
@@ -267,7 +306,8 @@
           "name": "text",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetPreviewModel",
@@ -280,7 +320,8 @@
           "name": "model",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetPreviewRot",
@@ -305,7 +346,8 @@
           "name": "zoom",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetPreviewVehCol",
@@ -322,7 +364,8 @@
           "name": "colour2",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_SetPos",
@@ -339,7 +382,8 @@
           "name": "y",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "TextDraw_GetString",
@@ -347,6 +391,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "text",
+          "type": "string"
         }
       ]
     },
@@ -357,6 +407,16 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "sizeX",
+          "type": "float"
+        },
+        {
+          "name": "sizeY",
+          "type": "float"
+        }
       ]
     },
     {
@@ -365,6 +425,16 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "sizeX",
+          "type": "float"
+        },
+        {
+          "name": "sizeY",
+          "type": "float"
         }
       ]
     },
@@ -375,6 +445,16 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        }
       ]
     },
     {
@@ -383,6 +463,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
         }
       ]
     },
@@ -393,6 +479,12 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
       ]
     },
     {
@@ -401,6 +493,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
         }
       ]
     },
@@ -411,6 +509,12 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
+        }
       ]
     },
     {
@@ -419,6 +523,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
         }
       ]
     },
@@ -429,6 +539,12 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "font",
+          "type": "int"
+        }
       ]
     },
     {
@@ -437,6 +553,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "set",
+          "type": "bool"
         }
       ]
     },
@@ -447,6 +569,12 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "set",
+          "type": "bool"
+        }
       ]
     },
     {
@@ -455,6 +583,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "set",
+          "type": "bool"
         }
       ]
     },
@@ -465,6 +599,12 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "alignment",
+          "type": "int"
+        }
       ]
     },
     {
@@ -473,6 +613,12 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "model",
+          "type": "int"
         }
       ]
     },
@@ -483,6 +629,24 @@
           "name": "textdraw",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "zoom",
+          "type": "float"
+        }
       ]
     },
     {
@@ -491,6 +655,16 @@
         {
           "name": "textdraw",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour1",
+          "type": "int"
+        },
+        {
+          "name": "colour2",
+          "type": "int"
         }
       ]
     }

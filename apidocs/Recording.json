@@ -15,7 +15,8 @@
           "name": "file",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     }
   ]
 }

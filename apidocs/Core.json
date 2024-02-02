@@ -2,11 +2,23 @@
   "functions": [
     {
       "name": "Core_TickCount",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "tick",
+          "type": "int"
+        }
+      ]
     },
     {
       "name": "Core_MaxPlayers",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "max",
+          "type": "int"
+        }
+      ]
     },
     {
       "name": "Core_Log",
@@ -15,11 +27,18 @@
           "name": "text",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_IsAdminTeleportAllowed",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
     },
     {
       "name": "Core_AllowAdminTeleport",
@@ -28,11 +47,18 @@
           "name": "allow",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_AreAllAnimationsEnabled",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
     },
     {
       "name": "Core_EnableAllAnimations",
@@ -41,7 +67,8 @@
           "name": "allow",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_IsAnimationLibraryValid",
@@ -50,11 +77,23 @@
           "name": "name",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
       ]
     },
     {
       "name": "Core_AreInteriorWeaponsAllowed",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
     },
     {
       "name": "Core_AllowInteriorWeapons",
@@ -63,7 +102,8 @@
           "name": "allow",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_BlockIpAddress",
@@ -76,7 +116,8 @@
           "name": "timeMS",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_UnBlockIpAddress",
@@ -85,7 +126,8 @@
           "name": "ipAddress",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "NPC_Connect",
@@ -98,15 +140,18 @@
           "name": "script",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_DisableEntryExitMarkers",
-      "params": []
+      "params": [],
+      "return": []
     },
     {
       "name": "Core_DisableNameTagsLOS",
-      "params": []
+      "params": [],
+      "return": []
     },
     {
       "name": "Core_EnableZoneNames",
@@ -115,7 +160,8 @@
           "name": "enable",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_ShowGameTextForAll",
@@ -132,7 +178,8 @@
           "name": "style",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_HideGameTextForAll",
@@ -141,7 +188,8 @@
           "name": "style",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "ConsoleVar_GetAsBool",
@@ -149,6 +197,12 @@
         {
           "name": "cvar",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "bool"
         }
       ]
     },
@@ -159,6 +213,12 @@
           "name": "cvar",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
+        }
       ]
     },
     {
@@ -167,6 +227,12 @@
         {
           "name": "cvar",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
         }
       ]
     },
@@ -177,11 +243,23 @@
           "name": "cvar",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "string"
+        }
       ]
     },
     {
       "name": "Core_NetworkStats",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
+      ]
     },
     {
       "name": "Player_GetNetworkStats",
@@ -190,11 +268,23 @@
           "name": "player",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
       ]
     },
     {
       "name": "Core_ServerTickRate",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "tick",
+          "type": "int"
+        }
+      ]
     },
     {
       "name": "ServerVar_GetAsBool",
@@ -202,6 +292,12 @@
         {
           "name": "cvar",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "bool"
         }
       ]
     },
@@ -212,6 +308,12 @@
           "name": "cvar",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
+        }
       ]
     },
     {
@@ -221,6 +323,12 @@
           "name": "cvar",
           "type": "string"
         }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
+        }
       ]
     },
     {
@@ -228,6 +336,12 @@
       "params": [
         {
           "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
           "type": "string"
         }
       ]
@@ -239,6 +353,12 @@
           "name": "weaponid",
           "type": "int"
         }
+      ],
+      "return": [
+        {
+          "name": "weapon",
+          "type": "string"
+        }
       ]
     },
     {
@@ -248,7 +368,8 @@
           "name": "globalChatRadius",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_SetMarkerRadius",
@@ -257,7 +378,8 @@
           "name": "playerMarkerRadius",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Player_NetStatsBytesReceived",
@@ -265,6 +387,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "bytes",
+          "type": "int"
         }
       ]
     },
@@ -275,6 +403,12 @@
           "name": "player",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "bytes",
+          "type": "int"
+        }
       ]
     },
     {
@@ -283,6 +417,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "status",
+          "type": "int"
         }
       ]
     },
@@ -293,6 +433,12 @@
           "name": "player",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "ms",
+          "type": "int"
+        }
       ]
     },
     {
@@ -301,6 +447,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
         }
       ]
     },
@@ -311,6 +463,12 @@
           "name": "player",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "received",
+          "type": "int"
+        }
       ]
     },
     {
@@ -319,6 +477,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "received",
+          "type": "int"
         }
       ]
     },
@@ -329,6 +493,12 @@
           "name": "player",
           "type": "pointer"
         }
+      ],
+      "return": [
+        {
+          "name": "sent",
+          "type": "int"
+        }
       ]
     },
     {
@@ -337,6 +507,12 @@
         {
           "name": "player",
           "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "packetLoss",
+          "type": "float"
         }
       ]
     },
@@ -347,7 +523,8 @@
           "name": "command",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_SetDeathDropAmount",
@@ -356,7 +533,8 @@
           "name": "amount",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_GameMode_SetText",
@@ -365,7 +543,8 @@
           "name": "string",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_SetGravity",
@@ -374,11 +553,18 @@
           "name": "gravity",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_GetGravity",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "gravity",
+          "type": "float"
+        }
+      ]
     },
     {
       "name": "Core_SetNameTagsDrawDistance",
@@ -387,7 +573,8 @@
           "name": "distance",
           "type": "float"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_SetWeather",
@@ -396,7 +583,8 @@
           "name": "weatherid",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_SetWorldTime",
@@ -405,7 +593,8 @@
           "name": "hour",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_ShowNameTags",
@@ -414,7 +603,8 @@
           "name": "show",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_ShowPlayerMarkers",
@@ -423,19 +613,33 @@
           "name": "mode",
           "type": "int"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_UsePedAnims",
-      "params": []
+      "params": [],
+      "return": []
     },
     {
       "name": "Core_GetWeather",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "weather",
+          "type": "int"
+        }
+      ]
     },
     {
       "name": "Core_GetWorldTime",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "hour",
+          "type": "int"
+        }
+      ]
     },
     {
       "name": "Core_ToggleChatTextReplacement",
@@ -444,11 +648,18 @@
           "name": "enable",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_IsChatTextReplacementToggled",
-      "params": []
+      "params": [],
+      "return": [
+        {
+          "name": "toggled",
+          "type": "bool"
+        }
+      ]
     },
     {
       "name": "Core_IsNickNameValid",
@@ -456,6 +667,12 @@
         {
           "name": "name",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     },
@@ -470,7 +687,8 @@
           "name": "allow",
           "type": "bool"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_IsNickNameCharacterAllowed",
@@ -479,11 +697,18 @@
           "name": "character",
           "type": "int"
         }
+      ],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
       ]
     },
     {
       "name": "Core_ClearBanList",
-      "params": []
+      "params": [],
+      "return": []
     },
     {
       "name": "Core_IsIpAddressBanned",
@@ -491,6 +716,12 @@
         {
           "name": "ip",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "isBanned",
+          "type": "bool"
         }
       ]
     },
@@ -500,6 +731,12 @@
         {
           "name": "weapon",
           "type": "uint8"
+        }
+      ],
+      "return": [
+        {
+          "name": "slot",
+          "type": "int"
         }
       ]
     },
@@ -514,7 +751,8 @@
           "name": "value",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     },
     {
       "name": "Core_IsValidRule",
@@ -522,6 +760,12 @@
         {
           "name": "name",
           "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
         }
       ]
     },
@@ -532,7 +776,8 @@
           "name": "name",
           "type": "string"
         }
-      ]
+      ],
+      "return": []
     }
   ]
 }
