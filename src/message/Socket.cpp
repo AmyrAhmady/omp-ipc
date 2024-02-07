@@ -6,7 +6,7 @@
 std::vector<MessageSocket*> MessageSocket::sockets;
 
 MessageSocket::MessageSocket(const std::string& name)
-	: socketName_(name), socketClient_({ 0 }), socketServer_({ 0 }), clientInitialized_(false)
+	: socketServer_({ 0 }), socketClient_({ 0 }), socketName_(name), clientInitialized_(false)
 {
 	int ret = 0;
 

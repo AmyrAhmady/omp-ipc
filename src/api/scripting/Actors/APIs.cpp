@@ -5,7 +5,7 @@ IPC_API(Actor_Create, int model, float x, float y, float z, float rot)
 	IActorsComponent* component = OmpManager::Get()->actors;
 	if (component)
 	{
-		IActor* actor = component->create(model, { x, y ,z }, rot);
+		IActor* actor = component->create(model, { x, y, z }, rot);
 		if (actor)
 		{
 			auto id = actor->getID();

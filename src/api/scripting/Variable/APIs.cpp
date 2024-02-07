@@ -95,7 +95,7 @@ IPC_API(SVar_GetNameAtIndex, int index)
 	GET_VAR_COMP(component);
 	StringView varname;
 	bool res = component->getKeyAtIndex(index, varname);
-	StringRef output = Impl::String();
+	String output = Impl::String();
 	if (res)
 	{
 		output = varname.data();
@@ -182,7 +182,7 @@ IPC_API(PVar_GetNameAtIndex, uintptr_t player, int index)
 	GET_PLAYER_VAR_COMP(component);
 	StringView varname;
 	bool res = component->getKeyAtIndex(index, varname);
-	StringRef output = Impl::String();
+	String output = Impl::String();
 	if (res)
 	{
 		output = varname.data();

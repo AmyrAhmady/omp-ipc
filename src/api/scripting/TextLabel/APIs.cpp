@@ -149,8 +149,6 @@ IPC_API(TextLabel3D_GetAttachedData, uintptr_t textlabel)
 IPC_API(PlayerTextLabel3D_Create, uintptr_t player, ConstStringRef text, uint32_t colour, float x, float y, float z, float drawDistance, uintptr_t attachedPlayer, uintptr_t attachedVehicle, bool los)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, attachedPlayer, attachedPlayer_);
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, attachedVehicle, attachedVehicle_);
 	IPlayerTextLabelData* labelData = queryExtension<IPlayerTextLabelData>(player_);
 	if (labelData)
 	{
@@ -158,10 +156,12 @@ IPC_API(PlayerTextLabel3D_Create, uintptr_t player, ConstStringRef text, uint32_
 
 		if (attachedPlayer)
 		{
+			GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, attachedPlayer, attachedPlayer_);
 			textlabel = labelData->create(text, Colour::FromRGBA(colour), { x, y, z }, drawDistance, los, *attachedPlayer_);
 		}
 		else if (attachedVehicle)
 		{
+			GET_POOL_ENTITY_CHECKED(OmpManager::Get()->vehicles, IVehicle, attachedVehicle, attachedVehicle_);
 			textlabel = labelData->create(text, Colour::FromRGBA(colour), { x, y, z }, drawDistance, los, *attachedVehicle_);
 		}
 		else
