@@ -17,54 +17,54 @@ IPC_API(Menu_Create, ConstStringRef title, uint32_t columns, float x, float y, f
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(Menu_Destroy, uintptr_t ptr)
+IPC_API(Menu_Destroy, uintptr_t menu)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	OmpManager::Get()->menus->release(menu->getID());
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	OmpManager::Get()->menus->release(menu_->getID());
 	IPC_RETURN();
 }
 
-IPC_API(Menu_AddItem, uintptr_t ptr, uint8_t column, ConstStringRef text)
+IPC_API(Menu_AddItem, uintptr_t menu, uint8_t column, ConstStringRef text)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto index = menu->addCell(text, column);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto index = menu_->addCell(text, column);
 	IPC_RETURN(int index);
 }
 
-IPC_API(Menu_SetColumnHeader, uintptr_t ptr, uint8_t column, ConstStringRef headerTitle)
+IPC_API(Menu_SetColumnHeader, uintptr_t menu, uint8_t column, ConstStringRef headerTitle)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	menu->setColumnHeader(headerTitle, column);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	menu_->setColumnHeader(headerTitle, column);
 	IPC_RETURN();
 }
 
-IPC_API(Menu_ShowForPlayer, uintptr_t ptr, uintptr_t player)
+IPC_API(Menu_ShowForPlayer, uintptr_t menu, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	menu->showForPlayer(*player_);
+	menu_->showForPlayer(*player_);
 	IPC_RETURN();
 }
 
-IPC_API(Menu_HideForPlayer, uintptr_t ptr, uintptr_t player)
+IPC_API(Menu_HideForPlayer, uintptr_t menu, uintptr_t player)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	menu->hideForPlayer(*player_);
+	menu_->hideForPlayer(*player_);
 	IPC_RETURN();
 }
 
-IPC_API(Menu_Disable, uintptr_t ptr)
+IPC_API(Menu_Disable, uintptr_t menu)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	menu->disable();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	menu_->disable();
 	IPC_RETURN();
 }
 
-IPC_API(Menu_DisableRow, uintptr_t ptr, uint8_t row)
+IPC_API(Menu_DisableRow, uintptr_t menu, uint8_t row)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	menu->disableRow(row);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	menu_->disableRow(row);
 	IPC_RETURN();
 }
 
@@ -80,74 +80,74 @@ IPC_API(Player_GetMenu, uintptr_t player)
 	return FUNCTION_FAIL_RETURN;
 }
 
-IPC_API(Menu_IsValid, uintptr_t ptr)
+IPC_API(Menu_IsValid, uintptr_t menu)
 {
 	if (OmpManager::Get()->menus == nullptr)
 	{
 		return FUNCTION_FAIL_RETURN;
 	}
 
-	IMenu* menu = reinterpret_cast<IMenu*>(ptr);
-	auto valid = menu != nullptr;
+	IMenu* menu_ = reinterpret_cast<IMenu*>(menu);
+	auto valid = menu_ != nullptr;
 	IPC_RETURN(bool valid);
 }
 
-IPC_API(Menu_IsDisabled, uintptr_t ptr)
+IPC_API(Menu_IsDisabled, uintptr_t menu)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto disabled = !menu->isEnabled();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto disabled = !menu_->isEnabled();
 	IPC_RETURN(bool disabled);
 }
 
-IPC_API(Menu_IsRowDisabled, uintptr_t ptr, int row)
+IPC_API(Menu_IsRowDisabled, uintptr_t menu, int row)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto disabled = !menu->isRowEnabled(row);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto disabled = !menu_->isRowEnabled(row);
 	IPC_RETURN(bool disabled);
 }
 
-IPC_API(Menu_GetColumns, uintptr_t ptr)
+IPC_API(Menu_GetColumns, uintptr_t menu)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto columns = menu->getColumnCount();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto columns = menu_->getColumnCount();
 	IPC_RETURN(int columns);
 }
 
-IPC_API(Menu_GetItems, uintptr_t ptr, int column)
+IPC_API(Menu_GetItems, uintptr_t menu, int column)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto rows = menu->getRowCount(column);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto rows = menu_->getRowCount(column);
 	IPC_RETURN(int rows);
 }
 
-IPC_API(Menu_GetPos, uintptr_t ptr)
+IPC_API(Menu_GetPos, uintptr_t menu)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto pos = menu->getPosition();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto pos = menu_->getPosition();
 	auto x = pos.x;
 	auto y = pos.y;
 	IPC_RETURN(float x, float y);
 }
 
-IPC_API(Menu_GetColumnWidth, uintptr_t ptr)
+IPC_API(Menu_GetColumnWidth, uintptr_t menu)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	auto widths = menu->getColumnWidths();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	auto widths = menu_->getColumnWidths();
 	auto column1Width = widths.x;
 	auto column2Width = widths.y;
 	IPC_RETURN(float column1Width, float column2Width);
 }
 
-IPC_API(Menu_GetColumnHeader, uintptr_t ptr, int column)
+IPC_API(Menu_GetColumnHeader, uintptr_t menu, int column)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	ConstStringRef header = menu->getColumnHeader(column).data();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	ConstStringRef header = menu_->getColumnHeader(column).data();
 	IPC_RETURN(ConstStringRef header);
 }
 
-IPC_API(Menu_GetItem, uintptr_t ptr, int column, int row)
+IPC_API(Menu_GetItem, uintptr_t menu, int column, int row)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, ptr, menu);
-	ConstStringRef cell = menu->getCell(column, row).data();
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->menus, IMenu, menu, menu_);
+	ConstStringRef cell = menu_->getCell(column, row).data();
 	IPC_RETURN(ConstStringRef cell);
 }

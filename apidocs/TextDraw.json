@@ -1,0 +1,672 @@
+{
+  "functions": [
+    {
+      "name": "TextDraw_Create",
+      "params": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_Destroy",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_IsValid",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_IsVisibleForPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "shown",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_SetLetterSize",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "sizeX",
+          "type": "float"
+        },
+        {
+          "name": "sizeY",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetTextSize",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "sizeX",
+          "type": "float"
+        },
+        {
+          "name": "sizeY",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetAlignment",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "alignment",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetColor",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetUseBox",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "use",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetBoxColor",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetShadow",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetOutline",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetBackgroundColor",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetFont",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "font",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetSetProportional",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "set",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetSelectable",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "set",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_ShowForPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_HideForPlayer",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_ShowForAll",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_HideForAll",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetString",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetPreviewModel",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "model",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetPreviewRot",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "rotationX",
+          "type": "float"
+        },
+        {
+          "name": "rotationY",
+          "type": "float"
+        },
+        {
+          "name": "rotationZ",
+          "type": "float"
+        },
+        {
+          "name": "zoom",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetPreviewVehCol",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "colour1",
+          "type": "int"
+        },
+        {
+          "name": "colour2",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_SetPos",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextDraw_GetString",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetLetterSize",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "sizeX",
+          "type": "float"
+        },
+        {
+          "name": "sizeY",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetTextSize",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "sizeX",
+          "type": "float"
+        },
+        {
+          "name": "sizeY",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetPos",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetColor",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetBoxColor",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetBackgroundColor",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetShadow",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetOutline",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetFont",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "font",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_IsBox",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "set",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_IsProportional",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "set",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_IsSelectable",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "set",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetAlignment",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "alignment",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetPreviewModel",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "model",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetPreviewRot",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "zoom",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TextDraw_GetPreviewVehCol",
+      "params": [
+        {
+          "name": "textdraw",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour1",
+          "type": "int"
+        },
+        {
+          "name": "colour2",
+          "type": "int"
+        }
+      ]
+    }
+  ]
+}

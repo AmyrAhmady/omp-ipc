@@ -1,0 +1,179 @@
+{
+  "functions": [
+    {
+      "name": "Checkpoint_Set",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "radius",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Checkpoint_Disable",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Checkpoint_IsPlayerIn",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "isIn",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Checkpoint_IsActive",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "active",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Checkpoint_Get",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "radius",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "RaceCheckpoint_Set",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "type",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "nextX",
+          "type": "float"
+        },
+        {
+          "name": "nextY",
+          "type": "float"
+        },
+        {
+          "name": "nextZ",
+          "type": "float"
+        },
+        {
+          "name": "radius",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "RaceCheckpoint_Disable",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "RaceCheckpoint_IsPlayerIn",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "isIn",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "RaceCheckpoint_IsActive",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "active",
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}

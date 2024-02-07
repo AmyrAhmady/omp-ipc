@@ -1,0 +1,587 @@
+{
+  "functions": [
+    {
+      "name": "TextLabel3D_Create",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "drawDistance",
+          "type": "float"
+        },
+        {
+          "name": "virtualWorld",
+          "type": "int"
+        },
+        {
+          "name": "los",
+          "type": "bool"
+        }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_Delete",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_AttachToPlayer",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "offsetX",
+          "type": "float"
+        },
+        {
+          "name": "offsetY",
+          "type": "float"
+        },
+        {
+          "name": "offsetZ",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_AttachToVehicle",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "vehicle",
+          "type": "pointer"
+        },
+        {
+          "name": "offsetX",
+          "type": "float"
+        },
+        {
+          "name": "offsetY",
+          "type": "float"
+        },
+        {
+          "name": "offsetZ",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_UpdateText",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_IsValid",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_IsStreamedIn",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "streamed",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_GetText",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_GetColor",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_GetPos",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_SetDrawDistance",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_GetDrawDistance",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_GetLOS",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "los",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_SetLOS",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "status",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_GetVirtualWorld",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "virtualWorld",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "TextLabel3D_SetVirtualWorld",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "world",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "TextLabel3D_GetAttachedData",
+      "params": [
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "attached_player",
+          "type": "int"
+        },
+        {
+          "name": "attached_vehicle",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_Create",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "drawDistance",
+          "type": "float"
+        },
+        {
+          "name": "attachedPlayer",
+          "type": "pointer"
+        },
+        {
+          "name": "attachedVehicle",
+          "type": "pointer"
+        },
+        {
+          "name": "los",
+          "type": "bool"
+        }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_Delete",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PlayerTextLabel3D_UpdateText",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "colour",
+          "type": "uint32"
+        },
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PlayerTextLabel3D_IsValid",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_GetText",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_GetColor",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "colour",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_GetPos",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_SetDrawDistance",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PlayerTextLabel3D_GetDrawDistance",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_GetLOS",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "los",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "PlayerTextLabel3D_SetLOS",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        },
+        {
+          "name": "status",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PlayerTextLabel3D_GetVirtualWorld",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "textlabel",
+          "type": "pointer"
+        }
+      ],
+      "return": []
+    }
+  ]
+}

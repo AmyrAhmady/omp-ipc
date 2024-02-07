@@ -79,9 +79,9 @@ IPC_API(Class_Count)
 	IPC_RETURN();
 }
 
-IPC_API(Class_GetData, uintptr_t ptr)
+IPC_API(Class_GetData, uintptr_t classptr)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->classes, IClass, ptr, class_);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->classes, IClass, classptr, class_);
 	const PlayerClass& data = class_->getClass();
 	auto teamid = data.team;
 	auto skin = data.skin;
@@ -98,9 +98,9 @@ IPC_API(Class_GetData, uintptr_t ptr)
 	IPC_RETURN(int teamid, int skin, float x, float y, float z, float angle, uint8_t weapon1, uint32_t weapon1_ammo, uint8_t weapon2, uint32_t weapon2_ammo, uint8_t weapon3, uint32_t weapon3_ammo);
 }
 
-IPC_API(Class_Edit, uintptr_t ptr, int teamid, int skin, float x, float y, float z, float angle, int weapon1, int weapon1_ammo, int weapon2, int weapon2_ammo, int weapon3, int weapon3_ammo)
+IPC_API(Class_Edit, uintptr_t classptr, int teamid, int skin, float x, float y, float z, float angle, int weapon1, int weapon1_ammo, int weapon2, int weapon2_ammo, int weapon3, int weapon3_ammo)
 {
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->classes, IClass, ptr, class_);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->classes, IClass, classptr, class_);
 	WeaponSlots weapons;
 	weapons[0].id = weapon1;
 	weapons[0].ammo = weapon1_ammo;

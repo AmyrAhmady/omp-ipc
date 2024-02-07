@@ -1,0 +1,783 @@
+{
+  "functions": [
+    {
+      "name": "Core_TickCount",
+      "params": [],
+      "return": [
+        {
+          "name": "tick",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Core_MaxPlayers",
+      "params": [],
+      "return": [
+        {
+          "name": "max",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Core_Log",
+      "params": [
+        {
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_IsAdminTeleportAllowed",
+      "params": [],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_AllowAdminTeleport",
+      "params": [
+        {
+          "name": "allow",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_AreAllAnimationsEnabled",
+      "params": [],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_EnableAllAnimations",
+      "params": [
+        {
+          "name": "allow",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_IsAnimationLibraryValid",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_AreInteriorWeaponsAllowed",
+      "params": [],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_AllowInteriorWeapons",
+      "params": [
+        {
+          "name": "allow",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_BlockIpAddress",
+      "params": [
+        {
+          "name": "ipAddress",
+          "type": "string"
+        },
+        {
+          "name": "timeMS",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_UnBlockIpAddress",
+      "params": [
+        {
+          "name": "ipAddress",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "NPC_Connect",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "script",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_DisableEntryExitMarkers",
+      "params": [],
+      "return": []
+    },
+    {
+      "name": "Core_DisableNameTagsLOS",
+      "params": [],
+      "return": []
+    },
+    {
+      "name": "Core_EnableZoneNames",
+      "params": [
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_ShowGameTextForAll",
+      "params": [
+        {
+          "name": "msg",
+          "type": "string"
+        },
+        {
+          "name": "time",
+          "type": "int"
+        },
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_HideGameTextForAll",
+      "params": [
+        {
+          "name": "style",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "ConsoleVar_GetAsBool",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "ConsoleVar_GetAsInt",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "ConsoleVar_GetAsFloat",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "ConsoleVar_GetAsString",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Core_NetworkStats",
+      "params": [],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_GetNetworkStats",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Core_ServerTickRate",
+      "params": [],
+      "return": [
+        {
+          "name": "tick",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "ServerVar_GetAsBool",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "ServerVar_GetAsInt",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "ServerVar_GetAsFloat",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "ServerVar_GetAsString",
+      "params": [
+        {
+          "name": "cvar",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Core_GetWeaponName",
+      "params": [
+        {
+          "name": "weaponid",
+          "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "weapon",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Core_SetChatRadius",
+      "params": [
+        {
+          "name": "globalChatRadius",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_SetMarkerRadius",
+      "params": [
+        {
+          "name": "playerMarkerRadius",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Player_NetStatsBytesReceived",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "bytes",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsBytesSent",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "bytes",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsConnectionStatus",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "status",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsGetConnectedTime",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "ms",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsGetIpPort",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsMessagesReceived",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "received",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsMessagesRecvPerSecond",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "received",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsMessagesSent",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "sent",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Player_NetStatsPacketLossPercent",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "packetLoss",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Core_SendRconCommand",
+      "params": [
+        {
+          "name": "command",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_SetDeathDropAmount",
+      "params": [
+        {
+          "name": "amount",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_GameMode_SetText",
+      "params": [
+        {
+          "name": "string",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_SetGravity",
+      "params": [
+        {
+          "name": "gravity",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_GetGravity",
+      "params": [],
+      "return": [
+        {
+          "name": "gravity",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "Core_SetNameTagsDrawDistance",
+      "params": [
+        {
+          "name": "distance",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_SetWeather",
+      "params": [
+        {
+          "name": "weatherid",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_SetWorldTime",
+      "params": [
+        {
+          "name": "hour",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_ShowNameTags",
+      "params": [
+        {
+          "name": "show",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_ShowPlayerMarkers",
+      "params": [
+        {
+          "name": "mode",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_UsePedAnims",
+      "params": [],
+      "return": []
+    },
+    {
+      "name": "Core_GetWeather",
+      "params": [],
+      "return": [
+        {
+          "name": "weather",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Core_GetWorldTime",
+      "params": [],
+      "return": [
+        {
+          "name": "hour",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Core_ToggleChatTextReplacement",
+      "params": [
+        {
+          "name": "enable",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_IsChatTextReplacementToggled",
+      "params": [],
+      "return": [
+        {
+          "name": "toggled",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_IsNickNameValid",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_AllowNickNameCharacter",
+      "params": [
+        {
+          "name": "character",
+          "type": "int"
+        },
+        {
+          "name": "allow",
+          "type": "bool"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_IsNickNameCharacterAllowed",
+      "params": [
+        {
+          "name": "character",
+          "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "allowed",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_ClearBanList",
+      "params": [],
+      "return": []
+    },
+    {
+      "name": "Core_IsIpAddressBanned",
+      "params": [
+        {
+          "name": "ip",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "isBanned",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_GetWeaponSlot",
+      "params": [
+        {
+          "name": "weapon",
+          "type": "uint8"
+        }
+      ],
+      "return": [
+        {
+          "name": "slot",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Core_AddRule",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Core_IsValidRule",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "valid",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "Core_RemoveRule",
+      "params": [
+        {
+          "name": "name",
+          "type": "string"
+        }
+      ],
+      "return": []
+    }
+  ]
+}

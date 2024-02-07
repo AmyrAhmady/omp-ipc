@@ -1,0 +1,326 @@
+{
+  "functions": [
+    {
+      "name": "SVar_SetInt",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "SVar_GetInt",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "SVar_SetString",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "SVar_GetString",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "len",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "SVar_SetFloat",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "SVar_GetFloat",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "SVar_Delete",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "SVar_GetUpperIndex",
+      "params": [],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "SVar_GetNameAtIndex",
+      "params": [
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "res",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "SVar_GetType",
+      "params": [
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "type",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "PVar_SetInt",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PVar_GetInt",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "PVar_SetString",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PVar_GetString",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "len",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "PVar_SetFloat",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        },
+        {
+          "name": "value",
+          "type": "float"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "PVar_GetFloat",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "value",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "name": "PVar_Delete",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "varname",
+          "type": "string"
+        }
+      ],
+      "return": [
+        {
+          "name": "ret",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "name": "PVar_GetUpperIndex",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "size",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "PVar_GetNameAtIndex",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "index",
+          "type": "int"
+        }
+      ],
+      "return": [
+        {
+          "name": "output",
+          "type": "string"
+        },
+        {
+          "name": "res",
+          "type": "bool"
+        }
+      ]
+    }
+  ]
+}

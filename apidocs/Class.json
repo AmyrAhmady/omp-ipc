@@ -1,0 +1,253 @@
+{
+  "functions": [
+    {
+      "name": "Class_Add",
+      "params": [
+        {
+          "name": "team",
+          "type": "uint8"
+        },
+        {
+          "name": "skin",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "angle",
+          "type": "float"
+        },
+        {
+          "name": "weapon1",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo1",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon2",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo2",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon3",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo3",
+          "type": "uint32"
+        }
+      ],
+      "return": [
+        {
+          "name": "id",
+          "type": "int"
+        },
+        {
+          "name": "ptr",
+          "type": "pointer"
+        }
+      ]
+    },
+    {
+      "name": "Player_SetSpawnInfo",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "team",
+          "type": "int"
+        },
+        {
+          "name": "skin",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "angle",
+          "type": "float"
+        },
+        {
+          "name": "weapon1",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo1",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon2",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo2",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon3",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo3",
+          "type": "uint32"
+        }
+      ],
+      "return": []
+    },
+    {
+      "name": "Player_GetSpawnInfo",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "team",
+          "type": "int"
+        },
+        {
+          "name": "skin",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "angle",
+          "type": "float"
+        },
+        {
+          "name": "weapon1",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo1",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon2",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo2",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon3",
+          "type": "uint8"
+        },
+        {
+          "name": "ammo3",
+          "type": "uint32"
+        }
+      ]
+    },
+    {
+      "name": "Class_Count",
+      "params": [],
+      "return": [
+        {
+          "name": "count",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "name": "Class_GetData",
+      "params": [
+        {
+          "name": "classptr",
+          "type": "pointer"
+        }
+      ],
+      "return": [
+        {
+          "name": "teamid",
+          "type": "int"
+        },
+        {
+          "name": "skin",
+          "type": "int"
+        },
+        {
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "name": "angle",
+          "type": "float"
+        },
+        {
+          "name": "weapon1",
+          "type": "uint8"
+        },
+        {
+          "name": "weapon1_ammo",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon2",
+          "type": "uint8"
+        },
+        {
+          "name": "weapon2_ammo",
+          "type": "uint32"
+        },
+        {
+          "name": "weapon3",
+          "type": "uint8"
+        },
+        {
+          "name": "weapon3_ammo",
+          "type": "uint32"
+        }
+      ]
+    }
+  ]
+}

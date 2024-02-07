@@ -1,0 +1,22 @@
+{
+  "functions": [
+    {
+      "name": "Recording_Start",
+      "params": [
+        {
+          "name": "player",
+          "type": "pointer"
+        },
+        {
+          "name": "type",
+          "type": "int"
+        },
+        {
+          "name": "file",
+          "type": "string"
+        }
+      ],
+      "return": []
+    }
+  ]
+}

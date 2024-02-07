@@ -26,8 +26,8 @@ IPC_API(Actor_Destroy, uintptr_t actor)
 IPC_API(Actor_IsStreamedInFor, uintptr_t actor, uintptr_t player)
 {
 	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->actors, IActor, actor, actor_);
-	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, player_);
-	auto streamed = actor_->isStreamedInForPlayer(*player_);
+	GET_POOL_ENTITY_CHECKED(OmpManager::Get()->players, IPlayer, player, forPlayer);
+	auto streamed = actor_->isStreamedInForPlayer(*forPlayer);
 	IPC_RETURN(bool streamed);
 }
 
